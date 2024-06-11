@@ -42,6 +42,44 @@ function datalist_dinamis($name,$table,$field,$value=null){
 function rename_string_is_aktif($string){
         return $string=='y'?'Aktif':'Tidak Aktif';
     }
+
+    function tgl_indo($tanggal){
+        $bulan = array (
+            1 =>   'Januari',
+            'Februari',
+            'Maret',
+            'April',
+            'Mei',
+            'Juni',
+            'Juli',
+            'Agustus',
+            'September',
+            'Oktober',
+            'November',
+            'Desember'
+        );
+        $pecahkan = explode('-', $tanggal);
+        
+        // variabel pecahkan 0 = tanggal
+        // variabel pecahkan 1 = bulan
+        // variabel pecahkan 2 = tahun
+     
+        return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
+    }
+
+function rename_status($statusCode) {
+    $status = [
+        1 => 'Input Admin',
+        2 => 'Acc Bang Mario',
+        3 => 'Acc Habib',
+        4 => 'Acc Bang Fahmi',
+        99 => 'Revisi',
+        88 => 'Ditolak',
+    ];
+    
+    // Contoh penggunaan:
+    return $status[$statusCode];
+}
     
 
 function is_login(){
