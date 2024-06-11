@@ -45,12 +45,15 @@ class Tbl_pengajuan_model extends CI_Model
     function get_limit_data($limit, $start = 0, $q = NULL) {
         $this->db->order_by($this->id, $this->order);
         $this->db->like('id_pengajuan', $q);
-	$this->db->or_like('perihal', $q);
-	$this->db->or_like('tanggal_pengajuan', $q);
-	$this->db->or_like('berkas', $q);
-	$this->db->or_like('status', $q);
-	$this->db->or_like('catatan', $q);
-	$this->db->limit($limit, $start);
+        $this->db->or_like('perihal', $q);
+        $this->db->or_like('tanggal_pengajuan', $q);
+        $this->db->or_like('berkas', $q);
+        $this->db->or_like('status', $q);
+        $this->db->or_like('catatan', $q);
+        $this->db->limit($limit, $start);
+        if($this->session->userdata('id_user_level') == 1) {
+            $this->db->where('status >= 1');
+        }
         return $this->db->get($this->table)->result();
     }
 
