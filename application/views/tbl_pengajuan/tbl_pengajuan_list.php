@@ -3,7 +3,6 @@
         <div class="row">
             <div class="col-xs-12">
                 <div class="box box-warning box-solid">
-    
                     <div class="box-header">
                         <h3 class="box-title">KELOLA DATA PENGAJUAN</h3>
                     </div>
@@ -68,14 +67,14 @@
 			<td><?php echo $tbl_pengajuan->perihal ?></td>
 			<td><?php echo tgl_indo($tbl_pengajuan->tanggal_pengajuan) ?></td>
 			<td><?php echo anchor(base_url('assets/berkas/'.$tbl_pengajuan->berkas),'<i class="fa fa-eye" aria-hidden="true"> Lihat File</i>','class="btn btn-primary btn-sm" target="_blank"'); ?></td>
-			<td><?php echo rename_status($tbl_pengajuan->status) ?></td>
+			<td><button class="btn btn-sm btn-success"><?php echo rename_status($tbl_pengajuan->status) ?></button></td>
 			<td><?php echo $tbl_pengajuan->catatan ?></td>
 			<td style="text-align:center" width="200px">
 				<?php 
 				//echo anchor(site_url('tbl_pengajuan/read/'.$tbl_pengajuan->id_pengajuan),'<i class="fa fa-eye" aria-hidden="true"></i>','class="btn btn-danger btn-sm"'); 
 				//echo '  '; 
                 if($this->session->userdata('id_user_level') == 1) {
-                    if(($tbl_pengajuan->status == 1) && ($tbl_pengajuan->status == 99)) {
+                    if(($tbl_pengajuan->status == 1) || ($tbl_pengajuan->status == 3) || ($tbl_pengajuan->status == 6) || ($tbl_pengajuan->status == 9)) {
                         echo anchor(site_url('tbl_pengajuan/update/'.$tbl_pengajuan->id_pengajuan),'<i class="fa fa-pencil-square-o" aria-hidden="true"></i>','class="btn btn-danger btn-sm"'); 
                         echo '  '; 
                         echo anchor(site_url('tbl_pengajuan/delete/'.$tbl_pengajuan->id_pengajuan),'<i class="fa fa-trash-o" aria-hidden="true"></i>','class="btn btn-danger btn-sm" Delete onclick="javascript: return confirm(\'Are You Sure ?\')"'); 
@@ -84,6 +83,16 @@
                 if($this->session->userdata('id_user_level') == 2) {
                     if($tbl_pengajuan->status == 1) {
                         echo anchor(site_url('tbl_pengajuan/acc_gm/'.$tbl_pengajuan->id_pengajuan),'<i class="fa fa-check" aria-hidden="true"></i>','class="btn btn-danger btn-sm"'); 
+                    }
+                }
+                if($this->session->userdata('id_user_level') == 3) {
+                    if($tbl_pengajuan->status == 4) {
+                        echo anchor(site_url('tbl_pengajuan/acc_ceo/'.$tbl_pengajuan->id_pengajuan),'<i class="fa fa-check" aria-hidden="true"></i>','class="btn btn-danger btn-sm"'); 
+                    }
+                }
+                if($this->session->userdata('id_user_level') == 4) {
+                    if($tbl_pengajuan->status == 7) {
+                        echo anchor(site_url('tbl_pengajuan/acc_keuangan/'.$tbl_pengajuan->id_pengajuan),'<i class="fa fa-check" aria-hidden="true"></i>','class="btn btn-danger btn-sm"'); 
                     }
                 }
 				?>

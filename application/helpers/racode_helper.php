@@ -70,11 +70,15 @@ function rename_string_is_aktif($string){
 function rename_status($statusCode) {
     $status = [
         1 => 'Input Admin',
-        2 => 'Acc Bang Mario',
-        3 => 'Acc Habib',
-        4 => 'Acc Bang Fahmi',
-        99 => 'Revisi',
-        88 => 'Ditolak',
+        2 => 'Ditolak (GM Smartphone)',
+        3 => 'Revisi (GM Smartphone)',
+        4 => 'Acc (GM Smartphone)',
+        5 => 'Ditolak (CEO)',
+        6 => 'Revisi (CEO)',
+        7 => 'Acc (CEO)',
+        8 => 'Ditolak (Manager Keuangan)',
+        9 => 'Revisi Manager Keuangan',
+        10 => 'Acc (Manager Keuangan)',
     ];
     
     // Contoh penggunaan:

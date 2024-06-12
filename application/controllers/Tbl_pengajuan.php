@@ -158,19 +158,101 @@ class Tbl_pengajuan extends CI_Controller
         }
     }
 
+    public function acc_gm_action()
+    {
+      
+            $data = array(
+                'status' => $this->input->post('status', TRUE),
+                'catatan' => $this->input->post('catatan', TRUE),
+            );
+
+            $this->Tbl_pengajuan_model->update($this->input->post('id_pengajuan', TRUE), $data);
+            $this->session->set_flashdata('message', 'Update Record Success !');
+            redirect(site_url('tbl_pengajuan'));
+    }
+
+    public function acc_ceo($id)
+    {
+        $row = $this->Tbl_pengajuan_model->get_by_id($id);
+
+        if ($row) {
+            $data = array(
+                'button' => 'ACC',
+                'action' => site_url('tbl_pengajuan/acc_ceo_action'),
+                'id_pengajuan' => set_value('id_pengajuan', $row->id_pengajuan),
+                'perihal' => set_value('perihal', $row->perihal),
+                'tanggal_pengajuan' => set_value('tanggal_pengajuan', $row->tanggal_pengajuan),
+                'berkas' => set_value('berkas', $row->berkas),
+                'status' => set_value('status', $row->status),
+                'catatan' => set_value('catatan', $row->catatan),
+            );
+            $this->template->load('template', 'tbl_pengajuan/tbl_pengajuan_acc_ceo', $data);
+        } else {
+            $this->session->set_flashdata('message', 'Record Not Found');
+            redirect(site_url('tbl_pengajuan'));
+        }
+    }
+
+    public function acc_ceo_action()
+    {
+            $data = array(
+                'status' => $this->input->post('status', TRUE),
+                'catatan' => $this->input->post('catatan', TRUE),
+            );
+
+            $this->Tbl_pengajuan_model->update($this->input->post('id_pengajuan', TRUE), $data);
+            $this->session->set_flashdata('message', 'Update Record Success !');
+            redirect(site_url('tbl_pengajuan'));
+    }
+
+    public function acc_keuangan($id)
+    {
+        $row = $this->Tbl_pengajuan_model->get_by_id($id);
+
+        if ($row) {
+            $data = array(
+                'button' => 'ACC',
+                'action' => site_url('tbl_pengajuan/acc_keuangan_action'),
+                'id_pengajuan' => set_value('id_pengajuan', $row->id_pengajuan),
+                'perihal' => set_value('perihal', $row->perihal),
+                'tanggal_pengajuan' => set_value('tanggal_pengajuan', $row->tanggal_pengajuan),
+                'berkas' => set_value('berkas', $row->berkas),
+                'status' => set_value('status', $row->status),
+                'catatan' => set_value('catatan', $row->catatan),
+            );
+            $this->template->load('template', 'tbl_pengajuan/tbl_pengajuan_acc_keuangan', $data);
+        } else {
+            $this->session->set_flashdata('message', 'Record Not Found');
+            redirect(site_url('tbl_pengajuan'));
+        }
+    }
+
+    public function acc_keuangan_action()
+    {
+            $data = array(
+                'status' => $this->input->post('status', TRUE),
+                'catatan' => $this->input->post('catatan', TRUE),
+            );
+
+            $this->Tbl_pengajuan_model->update($this->input->post('id_pengajuan', TRUE), $data);
+            $this->session->set_flashdata('message', 'Update Record Success !');
+            redirect(site_url('tbl_pengajuan'));
+    }
+
     public function update_action()
     {
         $this->_rules();
+        $berkas = $this->upload_file();
 
         if ($this->form_validation->run() == FALSE) {
             $this->update($this->input->post('id_pengajuan', TRUE));
         } else {
             $data = array(
-                'perihal' => $this->input->post('perihal', TRUE),
+               'perihal' => $this->input->post('perihal', TRUE),
                 'tanggal_pengajuan' => $this->input->post('tanggal_pengajuan', TRUE),
-                'berkas' => $this->input->post('berkas', TRUE),
-                'status' => $this->input->post('status', TRUE),
-                'catatan' => $this->input->post('catatan', TRUE),
+                'berkas' => $berkas['file_name'],
+                'status' => 1,
+                'catatan' => "Baru di Input",
             );
 
             $this->Tbl_pengajuan_model->update($this->input->post('id_pengajuan', TRUE), $data);
