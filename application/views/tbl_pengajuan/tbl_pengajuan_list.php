@@ -12,8 +12,10 @@
             <div class='row'>
             <div class='col-md-9'>
             <div style="padding-bottom: 10px;">
-                <?php echo anchor(site_url('tbl_pengajuan/create'), '<i class="fa fa-wpforms" aria-hidden="true"></i> Tambah Data', 'class="btn btn-danger btn-sm"'); ?>
-		    </div>
+                <?php if($this->session->userdata('id_user_level') == 1) { ?>
+                    <?php echo anchor(site_url('tbl_pengajuan/create'), '<i class="fa fa-wpforms" aria-hidden="true"></i> Tambah Data', 'class="btn btn-danger btn-sm"'); ?>
+                <?php } ?>
+            </div>
             </div>
             <div class='col-md-3'>
             <form action="<?php echo site_url('tbl_pengajuan/index'); ?>" class="form-inline" method="get">
@@ -72,9 +74,18 @@
 				<?php 
 				//echo anchor(site_url('tbl_pengajuan/read/'.$tbl_pengajuan->id_pengajuan),'<i class="fa fa-eye" aria-hidden="true"></i>','class="btn btn-danger btn-sm"'); 
 				//echo '  '; 
-				echo anchor(site_url('tbl_pengajuan/update/'.$tbl_pengajuan->id_pengajuan),'<i class="fa fa-pencil-square-o" aria-hidden="true"></i>','class="btn btn-danger btn-sm"'); 
-				echo '  '; 
-				echo anchor(site_url('tbl_pengajuan/delete/'.$tbl_pengajuan->id_pengajuan),'<i class="fa fa-trash-o" aria-hidden="true"></i>','class="btn btn-danger btn-sm" Delete onclick="javascript: return confirm(\'Are You Sure ?\')"'); 
+                if($this->session->userdata('id_user_level') == 1) {
+                    if(($tbl_pengajuan->status == 1) && ($tbl_pengajuan->status == 99)) {
+                        echo anchor(site_url('tbl_pengajuan/update/'.$tbl_pengajuan->id_pengajuan),'<i class="fa fa-pencil-square-o" aria-hidden="true"></i>','class="btn btn-danger btn-sm"'); 
+                        echo '  '; 
+                        echo anchor(site_url('tbl_pengajuan/delete/'.$tbl_pengajuan->id_pengajuan),'<i class="fa fa-trash-o" aria-hidden="true"></i>','class="btn btn-danger btn-sm" Delete onclick="javascript: return confirm(\'Are You Sure ?\')"'); 
+                    }
+                }
+                if($this->session->userdata('id_user_level') == 2) {
+                    if($tbl_pengajuan->status == 1) {
+                        echo anchor(site_url('tbl_pengajuan/acc_gm/'.$tbl_pengajuan->id_pengajuan),'<i class="fa fa-check" aria-hidden="true"></i>','class="btn btn-danger btn-sm"'); 
+                    }
+                }
 				?>
 			</td>
 		</tr>

@@ -136,6 +136,28 @@ class Tbl_pengajuan extends CI_Controller
         }
     }
 
+    public function acc_gm($id)
+    {
+        $row = $this->Tbl_pengajuan_model->get_by_id($id);
+
+        if ($row) {
+            $data = array(
+                'button' => 'ACC',
+                'action' => site_url('tbl_pengajuan/acc_gm_action'),
+                'id_pengajuan' => set_value('id_pengajuan', $row->id_pengajuan),
+                'perihal' => set_value('perihal', $row->perihal),
+                'tanggal_pengajuan' => set_value('tanggal_pengajuan', $row->tanggal_pengajuan),
+                'berkas' => set_value('berkas', $row->berkas),
+                'status' => set_value('status', $row->status),
+                'catatan' => set_value('catatan', $row->catatan),
+            );
+            $this->template->load('template', 'tbl_pengajuan/tbl_pengajuan_acc_gm', $data);
+        } else {
+            $this->session->set_flashdata('message', 'Record Not Found');
+            redirect(site_url('tbl_pengajuan'));
+        }
+    }
+
     public function update_action()
     {
         $this->_rules();
