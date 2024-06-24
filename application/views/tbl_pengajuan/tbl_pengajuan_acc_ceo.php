@@ -39,9 +39,9 @@
                         <td>
                             <select name="status" id="status" class="form-control" required>
                                 <option value="">-- Silakan Pilih --</option>
-                                <option value="8">Ditolak</option>
-                                <option value="9">Revisi</option>
-                                <option value="10">Acc</option>
+                                <option value="5">Ditolak</option>
+                                <option value="6">Revisi</option>
+                                <option value="7">Acc</option>
                             </select>
                         </td>
 					</tr>

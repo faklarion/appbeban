@@ -29,7 +29,7 @@ class Tbl_pengajuan extends CI_Controller
         $config['per_page'] = 10;
         $config['page_query_string'] = FALSE;
         $config['total_rows'] = $this->Tbl_pengajuan_model->total_rows($q);
-        $tbl_pengajuan = $this->Tbl_pengajuan_model->get_limit_data($config['per_page'], $start, $q);
+        $tbl_pengajuan = $this->Tbl_pengajuan_model->get_all();
         $config['full_tag_open'] = '<ul class="pagination pagination-sm no-margin pull-right">';
         $config['full_tag_close'] = '</ul>';
         $this->load->library('pagination');

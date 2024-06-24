@@ -18,6 +18,15 @@ class Tbl_pengajuan_model extends CI_Model
     // get all
     function get_all()
     {
+        if(($this->session->userdata('id_user_level') == 1) || ($this->session->userdata('id_user_level') == 2))  {
+            $this->db->where('status >= 1');
+        } 
+        if($this->session->userdata('id_user_level') == 3)  {
+            $this->db->where('status >= 4');
+        }
+        if($this->session->userdata('id_user_level') == 4)  {
+            $this->db->where('status >= 7');
+        }
         $this->db->order_by($this->id, $this->order);
         return $this->db->get($this->table)->result();
     }
