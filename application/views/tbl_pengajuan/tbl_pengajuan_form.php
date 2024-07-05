@@ -21,6 +21,11 @@
 						<td width='200'>File</td>
 						<td> <input type="file" class="form-control" value="<?php echo $berkas; ?>" name="berkas" id="berkas" placeholder="File" required></td>
 					</tr>
+
+					<tr>
+						<td width='200'>Keterangan</td>
+						<td> <textarea class="form-control" name="keterangan" id="keterangan" placeholder="keterangan" required><?php echo $keterangan; ?></textarea></td>
+					</tr>
 	
 					<tr>
 						<td></td>

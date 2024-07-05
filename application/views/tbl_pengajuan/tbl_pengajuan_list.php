@@ -44,6 +44,7 @@
                     <th>No</th>
                     <th>Perihal</th>
                     <th>Tanggal Pengajuan</th>
+                    <th>Keterangan</th>
                     <th>File</th>
                     <th>Status</th>
                     <th>Catatan</th>
@@ -59,6 +60,7 @@
 			<td><?php echo ++$start ?></td>
 			<td><?php echo $tbl_pengajuan->perihal ?></td>
 			<td><?php echo tgl_indo($tbl_pengajuan->tanggal_pengajuan) ?></td>
+            <td><?php echo $tbl_pengajuan->keterangan ?></td>
 			<td><?php echo anchor(base_url('assets/berkas/'.$tbl_pengajuan->berkas),'<i class="fa fa-eye" aria-hidden="true"> Lihat File</i>','class="btn btn-primary btn-sm" target="_blank"'); ?></td>
 			<td><button class="btn btn-sm btn-success"><?php echo rename_status($tbl_pengajuan->status) ?></button></td>
 			<td><?php echo $tbl_pengajuan->catatan ?></td>

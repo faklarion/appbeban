@@ -54,6 +54,7 @@ class Tbl_pengajuan extends CI_Controller
                 'perihal' => $row->perihal,
                 'tanggal_pengajuan' => $row->tanggal_pengajuan,
                 'berkas' => $row->berkas,
+                'keterangan' => $row->keterangan,
                 'status' => $row->status,
                 'catatan' => $row->catatan,
             );
@@ -73,6 +74,7 @@ class Tbl_pengajuan extends CI_Controller
             'perihal' => set_value('perihal'),
             'tanggal_pengajuan' => set_value('tanggal_pengajuan'),
             'berkas' => set_value('berkas'),
+            'keterangan' => set_value('keterangan'),
             'status' => set_value('status'),
             'catatan' => set_value('catatan'),
         );
@@ -101,6 +103,7 @@ class Tbl_pengajuan extends CI_Controller
             $data = array(
                 'perihal' => $this->input->post('perihal', TRUE),
                 'tanggal_pengajuan' => $this->input->post('tanggal_pengajuan', TRUE),
+                'keterangan' => $this->input->post('keterangan', TRUE),
                 'berkas' => $berkas['file_name'],
                 'status' => 1,
                 'catatan' => "Baru di Input",
@@ -128,6 +131,7 @@ class Tbl_pengajuan extends CI_Controller
                 'berkas' => set_value('berkas', $row->berkas),
                 'status' => set_value('status', $row->status),
                 'catatan' => set_value('catatan', $row->catatan),
+                'keterangan' => set_value('keterangan', $row->keterangan),
             );
             $this->template->load('template', 'tbl_pengajuan/tbl_pengajuan_form', $data);
         } else {
@@ -149,6 +153,7 @@ class Tbl_pengajuan extends CI_Controller
                 'tanggal_pengajuan' => set_value('tanggal_pengajuan', $row->tanggal_pengajuan),
                 'berkas' => set_value('berkas', $row->berkas),
                 'status' => set_value('status', $row->status),
+                'keterangan' => set_value('keterangan', $row->keterangan),
                 'catatan' => set_value('catatan', $row->catatan),
             );
             $this->template->load('template', 'tbl_pengajuan/tbl_pengajuan_acc_gm', $data);
@@ -180,6 +185,7 @@ class Tbl_pengajuan extends CI_Controller
                 'button' => 'ACC',
                 'action' => site_url('tbl_pengajuan/acc_ceo_action'),
                 'id_pengajuan' => set_value('id_pengajuan', $row->id_pengajuan),
+                'keterangan' => set_value('keterangan', $row->keterangan),
                 'perihal' => set_value('perihal', $row->perihal),
                 'tanggal_pengajuan' => set_value('tanggal_pengajuan', $row->tanggal_pengajuan),
                 'berkas' => set_value('berkas', $row->berkas),
@@ -214,6 +220,7 @@ class Tbl_pengajuan extends CI_Controller
                 'button' => 'ACC',
                 'action' => site_url('tbl_pengajuan/acc_keuangan_action'),
                 'id_pengajuan' => set_value('id_pengajuan', $row->id_pengajuan),
+                'keterangan' => set_value('keterangan', $row->keterangan),
                 'perihal' => set_value('perihal', $row->perihal),
                 'tanggal_pengajuan' => set_value('tanggal_pengajuan', $row->tanggal_pengajuan),
                 'berkas' => set_value('berkas', $row->berkas),
@@ -250,6 +257,7 @@ class Tbl_pengajuan extends CI_Controller
             $data = array(
                'perihal' => $this->input->post('perihal', TRUE),
                 'tanggal_pengajuan' => $this->input->post('tanggal_pengajuan', TRUE),
+                'keterangan' => $this->input->post('keterangan', TRUE),
                 'berkas' => $berkas['file_name'],
                 'status' => 1,
                 'catatan' => "Baru di Input",
