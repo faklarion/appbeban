@@ -15,7 +15,6 @@
                             <tr><td>Datalist</td><td><?php echo datalist_dinamis('test', 'tbl_user', 'full_name') ?></td></tr>
                             <tr><td>Combobox</td><td><?php echo cmb_dinamis('test', 'tbl_user', 'full_name', 'id_users') ?></td></tr>
                         </table>
-
                     </div>
                 </div>
             </div>
