@@ -71,15 +71,17 @@
 
                                         <p>
                                             <?php echo $this->session->userdata('full_name'); ?>                                         
-                                            <small>Member since Nov. 2012</small>
+                                            <small><?php 
+                                            $level = $this->User_model->get_by_id_level($this->session->userdata('id_user_level'));
+                                            echo $level->nama_level;
+                                            ?></small>
                                         </p>
                                     </li>
                                     <!-- Menu Footer-->
                                     <li class="user-footer">
-                                        <div class="pull-left">
+                                        <!-- <div class="pull-left">
                                             <?php echo anchor('user/profile', 'Profile', array('class' => 'btn btn-default btn-flat')); ?>
-                                            <!--<a href="#" class="btn btn-default btn-flat">Profile</a>-->
-                                        </div>
+                                        </div> -->
                                         <div class="pull-right">
                                             <?php echo anchor('auth/logout', 'Logout', array('class' => 'btn btn-default btn-flat')); ?>
                                             <!--<a href="#" class="btn btn-default btn-flat">Sign out</a>-->

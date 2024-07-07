@@ -5,55 +5,81 @@
             <div class="col-lg-3 col-xs-6">
                 <div class="small-box bg-aqua">
                     <div class="inner">
-                        <h3>150</h3>
+                        <h3>
+                        <?php 
+                            $query = $this->db->query('SELECT * FROM tbl_pengajuan');
+                            echo $query->num_rows();  
+                        ?>
+                        </h3>
                         <p>Total Pengajuan</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-bag"></i>
+                        <i class="fa fa-archive"></i>
                     </div>
                     <a href="<?php echo site_url('tbl_pengajuan') ?>" class="small-box-footer">More info <i
                             class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
 
+            <?php if(($this->session->userdata('id_user_level') == 1) || ($this->session->userdata('id_user_level') == 2)) { ?>
             <div class="col-lg-3 col-xs-6">
                 <div class="small-box bg-green">
                     <div class="inner">
-                        <h3>53<sup style="font-size: 20px">%</sup></h3>
-                        <p>Bounce Rate</p>
+                        <h3>
+                        <?php 
+                            $query = $this->db->query('SELECT * FROM tbl_pengajuan WHERE status = 4');
+                            echo $query->num_rows();  
+                        ?>
+                        </h3>
+                        <p>Jumlah ACC GM Smartphone</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-stats-bars"></i>
+                        <i class="fa fa-check"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="<?php echo site_url('tbl_pengajuan') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
+            <?php } ?>
 
+            <?php if(($this->session->userdata('id_user_level') == 1) || ($this->session->userdata('id_user_level') == 3)) { ?>
             <div class="col-lg-3 col-xs-6">
                 <div class="small-box bg-yellow">
                     <div class="inner">
-                        <h3>44</h3>
-                        <p>User Registrations</p>
+                        <h3>
+                        <?php 
+                            $query = $this->db->query('SELECT * FROM tbl_pengajuan WHERE status = 7');
+                            echo $query->num_rows();  
+                        ?>
+                        </h3>
+                        <p>Jumlah ACC CEO</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-person-add"></i>
+                        <i class="fa fa-check"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="<?php echo site_url('tbl_pengajuan') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
-
+            <?php } ?>
+            
+            <?php if(($this->session->userdata('id_user_level') == 1) || ($this->session->userdata('id_user_level') == 4)) { ?>
             <div class="col-lg-3 col-xs-6">
                 <div class="small-box bg-red">
                     <div class="inner">
-                        <h3>65</h3>
-                        <p>Unique Visitors</p>
+                        <h3>
+                        <?php 
+                            $query = $this->db->query('SELECT * FROM tbl_pengajuan WHERE status = 10');
+                            echo $query->num_rows();  
+                        ?>
+                        </h3>
+                        <p>Jumlah ACC Manager Keuangan</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-pie-graph"></i>
+                        <i class="fa fa-check"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="<?php echo site_url('tbl_pengajuan') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
+            <?php } ?>
         </div>
 
         <div class="box box-info">
@@ -72,90 +98,31 @@
                     <table class="table no-margin">
                         <thead>
                             <tr>
-                                <th>Order ID</th>
-                                <th>Item</th>
+                                <th>No</th>
+                                <th>Tanggal Update</th>
+                                <th>Perihal</th>
                                 <th>Status</th>
-                                <th>Popularity</th>
                             </tr>
                         </thead>
                         <tbody>
+                            <?php 
+                                $no = 1;
+                                foreach ($data_update as $row) :
+                            ?>
                             <tr>
-                                <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                                <td>Call of Duty IV</td>
-                                <td><span class="label label-success">Shipped</span></td>
+                                <td><?php echo $no++ ?></td>
                                 <td>
-                                    <div class="sparkbar" data-color="#00a65a" data-height="20"><canvas width="34"
-                                            height="20"
-                                            style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas>
-                                    </div>
+                                    <?php 
+                                        $dateString = $row->tanggal_update; // Your input date and time string
+                                        $dateTime = DateTime::createFromFormat('Y-m-d H:i:s', $dateString);
+                                        $indonesianDate = $dateTime->format('d F Y H:i:s');
+                                        echo $indonesianDate;
+                                    ?>
                                 </td>
+                                <td><?php echo $row->perihal ?></td>
+                                <td><button class="btn btn-sm btn-success"><?php echo rename_status($row->status) ?></button></td>
                             </tr>
-                            <tr>
-                                <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                                <td>Samsung Smart TV</td>
-                                <td><span class="label label-warning">Pending</span></td>
-                                <td>
-                                    <div class="sparkbar" data-color="#f39c12" data-height="20"><canvas width="34"
-                                            height="20"
-                                            style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                                <td>iPhone 6 Plus</td>
-                                <td><span class="label label-danger">Delivered</span></td>
-                                <td>
-                                    <div class="sparkbar" data-color="#f56954" data-height="20"><canvas width="34"
-                                            height="20"
-                                            style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                                <td>Samsung Smart TV</td>
-                                <td><span class="label label-info">Processing</span></td>
-                                <td>
-                                    <div class="sparkbar" data-color="#00c0ef" data-height="20"><canvas width="34"
-                                            height="20"
-                                            style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                                <td>Samsung Smart TV</td>
-                                <td><span class="label label-warning">Pending</span></td>
-                                <td>
-                                    <div class="sparkbar" data-color="#f39c12" data-height="20"><canvas width="34"
-                                            height="20"
-                                            style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                                <td>iPhone 6 Plus</td>
-                                <td><span class="label label-danger">Delivered</span></td>
-                                <td>
-                                    <div class="sparkbar" data-color="#f56954" data-height="20"><canvas width="34"
-                                            height="20"
-                                            style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                                <td>Call of Duty IV</td>
-                                <td><span class="label label-success">Shipped</span></td>
-                                <td>
-                                    <div class="sparkbar" data-color="#00a65a" data-height="20"><canvas width="34"
-                                            height="20"
-                                            style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas>
-                                    </div>
-                                </td>
-                            </tr>
+                            <?php endforeach ?>
                         </tbody>
                     </table>
                 </div>

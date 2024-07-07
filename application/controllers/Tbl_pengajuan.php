@@ -10,6 +10,7 @@ class Tbl_pengajuan extends CI_Controller
         parent::__construct();
         is_login();
         $this->load->model('Tbl_pengajuan_model');
+        $this->load->model('User_model');
         $this->load->library('form_validation');
     }
 
@@ -109,7 +110,17 @@ class Tbl_pengajuan extends CI_Controller
                 'catatan' => "Baru di Input",
             );
 
-            $this->Tbl_pengajuan_model->insert($data);
+            $id_pengajuan = $this->Tbl_pengajuan_model->insert($data);
+            date_default_timezone_set('Asia/Makassar'); # add your city to set local time zone
+            $now = date('Y-m-d H:i:s');
+
+            $data_update = array(
+                'id_pengajuan' => $id_pengajuan,
+                'tanggal_update' => $now,
+                'status' => 1,
+            );
+            
+            $this->Tbl_pengajuan_model->insert_update($data_update);
             $this->session->set_flashdata('message', 'Create Record Success !');
             redirect(site_url('tbl_pengajuan'));
         }
@@ -171,6 +182,16 @@ class Tbl_pengajuan extends CI_Controller
                 'catatan' => $this->input->post('catatan', TRUE),
             );
 
+            date_default_timezone_set('Asia/Makassar'); # add your city to set local time zone
+            $now = date('Y-m-d H:i:s');
+
+            $data_update = array(
+                'id_pengajuan' => $this->input->post('id_pengajuan', TRUE),
+                'tanggal_update' => $now,
+                'status' => $this->input->post('status', TRUE),
+            );
+            
+            $this->Tbl_pengajuan_model->insert_update($data_update);
             $this->Tbl_pengajuan_model->update($this->input->post('id_pengajuan', TRUE), $data);
             $this->session->set_flashdata('message', 'Update Record Success !');
             redirect(site_url('tbl_pengajuan'));
@@ -206,6 +227,16 @@ class Tbl_pengajuan extends CI_Controller
                 'catatan' => $this->input->post('catatan', TRUE),
             );
 
+            date_default_timezone_set('Asia/Makassar'); # add your city to set local time zone
+            $now = date('Y-m-d H:i:s');
+
+            $data_update = array(
+                'id_pengajuan' => $this->input->post('id_pengajuan', TRUE),
+                'tanggal_update' => $now,
+                'status' => $this->input->post('status', TRUE),
+            );
+            
+            $this->Tbl_pengajuan_model->insert_update($data_update);
             $this->Tbl_pengajuan_model->update($this->input->post('id_pengajuan', TRUE), $data);
             $this->session->set_flashdata('message', 'Update Record Success !');
             redirect(site_url('tbl_pengajuan'));
@@ -241,6 +272,16 @@ class Tbl_pengajuan extends CI_Controller
                 'catatan' => $this->input->post('catatan', TRUE),
             );
 
+            date_default_timezone_set('Asia/Makassar'); # add your city to set local time zone
+            $now = date('Y-m-d H:i:s');
+
+            $data_update = array(
+                'id_pengajuan' => $this->input->post('id_pengajuan', TRUE),
+                'tanggal_update' => $now,
+                'status' => $this->input->post('status', TRUE),
+            );
+            
+            $this->Tbl_pengajuan_model->insert_update($data_update);
             $this->Tbl_pengajuan_model->update($this->input->post('id_pengajuan', TRUE), $data);
             $this->session->set_flashdata('message', 'Update Record Success !');
             redirect(site_url('tbl_pengajuan'));
@@ -275,6 +316,8 @@ class Tbl_pengajuan extends CI_Controller
 
         if ($row) {
             $this->Tbl_pengajuan_model->delete($id);
+            $this->db->where('id_pengajuan', $id);
+            $this->db->delete('tbl_update'); 
             $this->session->set_flashdata('message', 'Delete Record Success');
             redirect(site_url('tbl_pengajuan'));
         } else {

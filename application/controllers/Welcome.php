@@ -4,10 +4,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Welcome extends CI_Controller {
 
-
+    function __construct()
+    {
+        parent::__construct();
+        //is_login();
+        $this->load->model('User_level_model');
+        $this->load->model('User_model');
+        $this->load->model('Tbl_pengajuan_model');
+        $this->load->library('form_validation');        
+	    $this->load->library('datatables');
+    }
     public function index() {
         //$this->load->view('table');
-        $this->template->load('template', 'welcome');
+        $data = array(
+            'data_update' => $this->Tbl_pengajuan_model->get_all_update(),
+        );
+        $this->template->load('template', 'welcome', $data);
     }
 
     public function form() {

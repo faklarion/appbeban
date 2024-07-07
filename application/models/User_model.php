@@ -40,6 +40,12 @@ class User_model extends CI_Model
         $this->db->where($this->id, $id);
         return $this->db->get($this->table)->row();
     }
+
+    function get_by_id_level($id)
+    {
+        $this->db->where('id_user_level', $id);
+        return $this->db->get('tbl_user_level')->row();
+    }
     
     // get total rows
     function total_rows($q = NULL) {

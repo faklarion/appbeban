@@ -18,17 +18,26 @@ class Tbl_pengajuan_model extends CI_Model
     // get all
     function get_all()
     {
-        if(($this->session->userdata('id_user_level') == 1) || ($this->session->userdata('id_user_level') == 2))  {
+        if (($this->session->userdata('id_user_level') == 1) || ($this->session->userdata('id_user_level') == 2)) {
             $this->db->where('status >= 1');
-        } 
-        if($this->session->userdata('id_user_level') == 3)  {
+        }
+        if ($this->session->userdata('id_user_level') == 3) {
             $this->db->where('status >= 4');
         }
-        if($this->session->userdata('id_user_level') == 4)  {
+        if ($this->session->userdata('id_user_level') == 4) {
             $this->db->where('status >= 7');
         }
         $this->db->order_by($this->id, $this->order);
         return $this->db->get($this->table)->result();
+    }
+
+    function get_all_update()
+    {
+        $this->db->select('*, tbl_update.status');
+        $this->db->join('tbl_pengajuan', 'tbl_pengajuan.id_pengajuan = tbl_update.id_pengajuan');
+        $this->db->order_by('id_update', $this->order);
+        $this->db->limit(10);
+        return $this->db->get('tbl_update')->result();
     }
 
     // get data by id
@@ -37,9 +46,10 @@ class Tbl_pengajuan_model extends CI_Model
         $this->db->where($this->id, $id);
         return $this->db->get($this->table)->row();
     }
-    
+
     // get total rows
-    function total_rows($q = NULL) {
+    function total_rows($q = NULL)
+    {
         $this->db->like('id_pengajuan', $q);
         $this->db->or_like('perihal', $q);
         $this->db->or_like('tanggal_pengajuan', $q);
@@ -47,27 +57,29 @@ class Tbl_pengajuan_model extends CI_Model
         $this->db->or_like('status', $q);
         $this->db->or_like('catatan', $q);
         $this->db->from($this->table);
-        if(($this->session->userdata('id_user_level') == 1) || ($this->session->userdata('id_user_level') == 2))  {
+        if (($this->session->userdata('id_user_level') == 1) || ($this->session->userdata('id_user_level') == 2)) {
             $this->db->where('status >= 1');
-        } if($this->session->userdata('id_user_level') == 3)  {
+        }
+        if ($this->session->userdata('id_user_level') == 3) {
             $this->db->where('status >= 4');
         }
-        if($this->session->userdata('id_user_level') == 4)  {
+        if ($this->session->userdata('id_user_level') == 4) {
             $this->db->where('status >= 7');
         }
         return $this->db->count_all_results();
     }
 
     // get data with limit and search
-    function get_limit_data($limit, $start = 0, $q = NULL) {
+    function get_limit_data($limit, $start = 0, $q = NULL)
+    {
         $this->db->order_by($this->id, $this->order);
-        if(($this->session->userdata('id_user_level') == 1) || ($this->session->userdata('id_user_level') == 2))  {
+        if (($this->session->userdata('id_user_level') == 1) || ($this->session->userdata('id_user_level') == 2)) {
             $this->db->where('status >= 1');
-        } 
-        if($this->session->userdata('id_user_level') == 3)  {
+        }
+        if ($this->session->userdata('id_user_level') == 3) {
             $this->db->where('status >= 4');
         }
-        if($this->session->userdata('id_user_level') == 4)  {
+        if ($this->session->userdata('id_user_level') == 4) {
             $this->db->where('status >= 7');
         }
         $this->db->limit($limit, $start);
@@ -78,6 +90,13 @@ class Tbl_pengajuan_model extends CI_Model
     function insert($data)
     {
         $this->db->insert($this->table, $data);
+        $id = $this->db->insert_id();
+        return (isset($id)) ? $id : FALSE;
+    }
+
+    function insert_update($data)
+    {
+        $this->db->insert('tbl_update', $data);
     }
 
     // update data
