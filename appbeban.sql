@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 15, 2024 at 08:29 AM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 7.4.30
+-- Waktu pembuatan: 08 Jul 2024 pada 06.33
+-- Versi server: 10.4.27-MariaDB
+-- Versi PHP: 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,17 +24,17 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_hak_akses`
+-- Struktur dari tabel `tbl_hak_akses`
 --
 
 CREATE TABLE `tbl_hak_akses` (
   `id` int(11) NOT NULL,
   `id_user_level` int(11) NOT NULL,
   `id_menu` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `tbl_hak_akses`
+-- Dumping data untuk tabel `tbl_hak_akses`
 --
 
 INSERT INTO `tbl_hak_akses` (`id`, `id_user_level`, `id_menu`) VALUES
@@ -46,7 +46,7 @@ INSERT INTO `tbl_hak_akses` (`id`, `id_user_level`, `id_menu`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_menu`
+-- Struktur dari tabel `tbl_menu`
 --
 
 CREATE TABLE `tbl_menu` (
@@ -56,10 +56,10 @@ CREATE TABLE `tbl_menu` (
   `icon` varchar(30) NOT NULL,
   `is_main_menu` int(11) NOT NULL,
   `is_aktif` enum('y','n') NOT NULL COMMENT 'y=yes,n=no'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `tbl_menu`
+-- Dumping data untuk tabel `tbl_menu`
 --
 
 INSERT INTO `tbl_menu` (`id_menu`, `title`, `url`, `icon`, `is_main_menu`, `is_aktif`) VALUES
@@ -72,7 +72,7 @@ INSERT INTO `tbl_menu` (`id_menu`, `title`, `url`, `icon`, `is_main_menu`, `is_a
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_pengajuan`
+-- Struktur dari tabel `tbl_pengajuan`
 --
 
 CREATE TABLE `tbl_pengajuan` (
@@ -81,30 +81,34 @@ CREATE TABLE `tbl_pengajuan` (
   `tanggal_pengajuan` date NOT NULL,
   `berkas` text NOT NULL,
   `status` int(11) NOT NULL,
-  `catatan` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `catatan` text NOT NULL,
+  `keterangan` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tbl_pengajuan`
+-- Dumping data untuk tabel `tbl_pengajuan`
 --
 
-INSERT INTO `tbl_pengajuan` (`id_pengajuan`, `perihal`, `tanggal_pengajuan`, `berkas`, `status`, `catatan`) VALUES
-(4, 'Festival Musik', '2024-06-11', 'logo_zed2.png', 10, 'Sudah di acc di erzap');
+INSERT INTO `tbl_pengajuan` (`id_pengajuan`, `perihal`, `tanggal_pengajuan`, `berkas`, `status`, `catatan`, `keterangan`) VALUES
+(4, 'Festival Musik', '2024-06-11', 'logo_zed2.png', 10, 'Sudah di acc di erzap', ''),
+(5, 'Beban', '2024-06-24', 'IMG_6757.jpeg', 10, 'test', ''),
+(6, 'test', '2024-06-24', 'IMG-20240624-WA0010.jpg', 7, 'test habb', ''),
+(7, 'test juli', '2024-07-08', 'Yuta_Okkotsu_29.jpg', 10, 'oke', 'test');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_setting`
+-- Struktur dari tabel `tbl_setting`
 --
 
 CREATE TABLE `tbl_setting` (
   `id_setting` int(11) NOT NULL,
   `nama_setting` varchar(50) NOT NULL,
   `value` varchar(40) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `tbl_setting`
+-- Dumping data untuk tabel `tbl_setting`
 --
 
 INSERT INTO `tbl_setting` (`id_setting`, `nama_setting`, `value`) VALUES
@@ -113,7 +117,30 @@ INSERT INTO `tbl_setting` (`id_setting`, `nama_setting`, `value`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_user`
+-- Struktur dari tabel `tbl_update`
+--
+
+CREATE TABLE `tbl_update` (
+  `id_update` int(11) NOT NULL,
+  `id_pengajuan` int(11) NOT NULL,
+  `tanggal_update` datetime NOT NULL,
+  `status` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `tbl_update`
+--
+
+INSERT INTO `tbl_update` (`id_update`, `id_pengajuan`, `tanggal_update`, `status`) VALUES
+(1, 7, '2024-07-08 12:10:04', 1),
+(2, 7, '2024-07-08 12:26:11', 4),
+(3, 7, '2024-07-08 12:30:31', 7),
+(4, 7, '2024-07-08 12:32:16', 10);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tbl_user`
 --
 
 CREATE TABLE `tbl_user` (
@@ -124,10 +151,10 @@ CREATE TABLE `tbl_user` (
   `images` text NOT NULL,
   `id_user_level` int(11) NOT NULL,
   `is_aktif` enum('y','n') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `tbl_user`
+-- Dumping data untuk tabel `tbl_user`
 --
 
 INSERT INTO `tbl_user` (`id_users`, `full_name`, `email`, `password`, `images`, `id_user_level`, `is_aktif`) VALUES
@@ -139,16 +166,16 @@ INSERT INTO `tbl_user` (`id_users`, `full_name`, `email`, `password`, `images`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_user_level`
+-- Struktur dari tabel `tbl_user_level`
 --
 
 CREATE TABLE `tbl_user_level` (
   `id_user_level` int(11) NOT NULL,
   `nama_level` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `tbl_user_level`
+-- Dumping data untuk tabel `tbl_user_level`
 --
 
 INSERT INTO `tbl_user_level` (`id_user_level`, `nama_level`) VALUES
@@ -162,77 +189,89 @@ INSERT INTO `tbl_user_level` (`id_user_level`, `nama_level`) VALUES
 --
 
 --
--- Indexes for table `tbl_hak_akses`
+-- Indeks untuk tabel `tbl_hak_akses`
 --
 ALTER TABLE `tbl_hak_akses`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tbl_menu`
+-- Indeks untuk tabel `tbl_menu`
 --
 ALTER TABLE `tbl_menu`
   ADD PRIMARY KEY (`id_menu`);
 
 --
--- Indexes for table `tbl_pengajuan`
+-- Indeks untuk tabel `tbl_pengajuan`
 --
 ALTER TABLE `tbl_pengajuan`
   ADD PRIMARY KEY (`id_pengajuan`);
 
 --
--- Indexes for table `tbl_setting`
+-- Indeks untuk tabel `tbl_setting`
 --
 ALTER TABLE `tbl_setting`
   ADD PRIMARY KEY (`id_setting`);
 
 --
--- Indexes for table `tbl_user`
+-- Indeks untuk tabel `tbl_update`
+--
+ALTER TABLE `tbl_update`
+  ADD PRIMARY KEY (`id_update`);
+
+--
+-- Indeks untuk tabel `tbl_user`
 --
 ALTER TABLE `tbl_user`
   ADD PRIMARY KEY (`id_users`);
 
 --
--- Indexes for table `tbl_user_level`
+-- Indeks untuk tabel `tbl_user_level`
 --
 ALTER TABLE `tbl_user_level`
   ADD PRIMARY KEY (`id_user_level`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `tbl_hak_akses`
+-- AUTO_INCREMENT untuk tabel `tbl_hak_akses`
 --
 ALTER TABLE `tbl_hak_akses`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
--- AUTO_INCREMENT for table `tbl_menu`
+-- AUTO_INCREMENT untuk tabel `tbl_menu`
 --
 ALTER TABLE `tbl_menu`
   MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `tbl_pengajuan`
+-- AUTO_INCREMENT untuk tabel `tbl_pengajuan`
 --
 ALTER TABLE `tbl_pengajuan`
-  MODIFY `id_pengajuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_pengajuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `tbl_setting`
+-- AUTO_INCREMENT untuk tabel `tbl_setting`
 --
 ALTER TABLE `tbl_setting`
   MODIFY `id_setting` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `tbl_user`
+-- AUTO_INCREMENT untuk tabel `tbl_update`
+--
+ALTER TABLE `tbl_update`
+  MODIFY `id_update` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT untuk tabel `tbl_user`
 --
 ALTER TABLE `tbl_user`
   MODIFY `id_users` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `tbl_user_level`
+-- AUTO_INCREMENT untuk tabel `tbl_user_level`
 --
 ALTER TABLE `tbl_user_level`
   MODIFY `id_user_level` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;

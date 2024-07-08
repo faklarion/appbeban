@@ -77,17 +77,17 @@
                 }
                 if($this->session->userdata('id_user_level') == 2) {
                     if($tbl_pengajuan->status == 1) {
-                        echo anchor(site_url('tbl_pengajuan/acc_gm/'.$tbl_pengajuan->id_pengajuan),'<i class="fa fa-check" aria-hidden="true"></i>','class="btn btn-danger btn-sm"'); 
+                       echo '<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modalGm'.$tbl_pengajuan->id_pengajuan.'"><i class="fa fa-check"></i></button>';
                     }
                 }
                 if($this->session->userdata('id_user_level') == 3) {
                     if($tbl_pengajuan->status == 4) {
-                        echo anchor(site_url('tbl_pengajuan/acc_ceo/'.$tbl_pengajuan->id_pengajuan),'<i class="fa fa-check" aria-hidden="true"></i>','class="btn btn-danger btn-sm"'); 
+                        echo '<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modalCeo'.$tbl_pengajuan->id_pengajuan.'"><i class="fa fa-check"></i></button>'; 
                     }
                 }
                 if($this->session->userdata('id_user_level') == 4) {
                     if($tbl_pengajuan->status == 7) {
-                        echo anchor(site_url('tbl_pengajuan/acc_keuangan/'.$tbl_pengajuan->id_pengajuan),'<i class="fa fa-check" aria-hidden="true"></i>','class="btn btn-danger btn-sm"'); 
+                        echo '<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modalKeuangan'.$tbl_pengajuan->id_pengajuan.'"><i class="fa fa-check"></i></button>';
                     }
                 }
 				?>
@@ -113,3 +113,252 @@
         } );
     });
 </script>
+
+<!-- ModalGm -->
+<?php foreach ($tbl_pengajuan_data as $tbl_pengajuan) : ?>
+<div id="modalGm<?php echo $tbl_pengajuan->id_pengajuan ?>" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<!-- konten modal-->
+			<div class="modal-content">
+				<!-- heading modal -->
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <?php $row = $this->Tbl_pengajuan_model->get_by_id($tbl_pengajuan->id_pengajuan); ?>
+					<h4 class="modal-title">Approval Pengajuan <?php echo $row->perihal ?></h4>
+				</div>
+				<!-- body modal -->
+				<div class="modal-body">
+                    <form action="<?php echo site_url('tbl_pengajuan/acc_gm_action') ?>" method="post" enctype='multipart/form-data'>
+                    <table class='table table-bordered'>
+                        <tr>
+                            <td width='200'>Perihal </td>
+                            <td>
+                                <?php echo $row->perihal ?>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width='200'>Tanggal Pengajuan </td>
+                            <td>
+                                <?php echo tgl_indo($row->tanggal_pengajuan) ?>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width='200'>File </td>
+                            <td>
+                                <?php echo anchor(base_url('assets/berkas/'.$row->berkas),'<i class="fa fa-eye" aria-hidden="true"> Lihat File</i>','class="btn btn-primary btn-sm" target="_blank"'); ?>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width='200'>Status </td>
+                            <td>
+                            <button class="btn btn-sm btn-success"><?php echo rename_status($row->status) ?></button>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td width='200'>Approval </td>
+                            <td>
+                                <input type="radio" name="status" value="2" id="status2" required>
+                                <label for="status2">Ditolak</label><br>
+                                <input type="radio" name="status" value="3" id="status3">
+                                <label for="status3">Revisi</label><br>
+                                <input type="radio" name="status" value="4" id="status4">
+                                <label for="status4">Acc</label>
+                            </td>
+                        </tr>
+        
+                        <tr>
+                            <td width='200'>Catatan </td>
+                            <td>
+                                <textarea class="form-control" name="catatan" id="catatan" required></textarea>
+                            </td>
+                        </tr>
+        
+                        <tr>
+                            <td></td>
+                            <td>
+                                <input type="hidden" name="id_pengajuan" value="<?php echo $row->id_pengajuan; ?>" /> 
+                                <button type="submit" class="btn btn-danger"><i class="fa fa-floppy-o"></i> Submit</button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+				</div>
+				<!-- footer modal -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+				</div>
+			</div>
+		</div>
+</div>
+<?php endforeach ?>
+<!-- End Modal -->
+
+<!-- ModalCeo -->
+<?php foreach ($tbl_pengajuan_data as $tbl_pengajuan) : ?>
+<div id="modalCeo<?php echo $tbl_pengajuan->id_pengajuan ?>" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<!-- konten modal-->
+			<div class="modal-content">
+				<!-- heading modal -->
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <?php $row = $this->Tbl_pengajuan_model->get_by_id($tbl_pengajuan->id_pengajuan); ?>
+					<h4 class="modal-title">Approval Pengajuan <?php echo $row->perihal ?></h4>
+				</div>
+				<!-- body modal -->
+				<div class="modal-body">
+                    <form action="<?php echo site_url('tbl_pengajuan/acc_ceo_action') ?>" method="post" enctype='multipart/form-data'>
+                    <table class='table table-bordered'>
+                        <tr>
+                            <td width='200'>Perihal </td>
+                            <td>
+                                <?php echo $row->perihal ?>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width='200'>Tanggal Pengajuan </td>
+                            <td>
+                                <?php echo tgl_indo($row->tanggal_pengajuan) ?>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width='200'>File </td>
+                            <td>
+                                <?php echo anchor(base_url('assets/berkas/'.$row->berkas),'<i class="fa fa-eye" aria-hidden="true"> Lihat File</i>','class="btn btn-primary btn-sm" target="_blank"'); ?>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width='200'>Status </td>
+                            <td>
+                            <button class="btn btn-sm btn-success"><?php echo rename_status($row->status) ?></button>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td width='200'>Approval </td>
+                            <td>
+                                <input type="radio" name="status" value="5" id="status2" required>
+                                <label for="status2">Ditolak</label><br>
+                                <input type="radio" name="status" value="6" id="status3">
+                                <label for="status3">Revisi</label><br>
+                                <input type="radio" name="status" value="7" id="status4">
+                                <label for="status4">Acc</label>
+                            </td>
+                        </tr>
+        
+                        <tr>
+                            <td width='200'>Catatan </td>
+                            <td>
+                                <textarea class="form-control" name="catatan" id="catatan" required></textarea>
+                            </td>
+                        </tr>
+        
+                        <tr>
+                            <td></td>
+                            <td>
+                                <input type="hidden" name="id_pengajuan" value="<?php echo $row->id_pengajuan; ?>" /> 
+                                <button type="submit" class="btn btn-danger"><i class="fa fa-floppy-o"></i> Submit</button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+				</div>
+				<!-- footer modal -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+				</div>
+			</div>
+		</div>
+</div>
+<?php endforeach ?>
+<!-- End Modal -->
+
+<!-- ModalKeuangan -->
+<?php foreach ($tbl_pengajuan_data as $tbl_pengajuan) : ?>
+<div id="modalKeuangan<?php echo $tbl_pengajuan->id_pengajuan ?>" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<!-- konten modal-->
+			<div class="modal-content">
+				<!-- heading modal -->
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <?php $row = $this->Tbl_pengajuan_model->get_by_id($tbl_pengajuan->id_pengajuan); ?>
+					<h4 class="modal-title">Approval Pengajuan <?php echo $row->perihal ?></h4>
+				</div>
+				<!-- body modal -->
+				<div class="modal-body">
+                    <form action="<?php echo site_url('tbl_pengajuan/acc_ceo_action') ?>" method="post" enctype='multipart/form-data'>
+                    <table class='table table-bordered'>
+                        <tr>
+                            <td width='200'>Perihal </td>
+                            <td>
+                                <?php echo $row->perihal ?>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width='200'>Tanggal Pengajuan </td>
+                            <td>
+                                <?php echo tgl_indo($row->tanggal_pengajuan) ?>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width='200'>File </td>
+                            <td>
+                                <?php echo anchor(base_url('assets/berkas/'.$row->berkas),'<i class="fa fa-eye" aria-hidden="true"> Lihat File</i>','class="btn btn-primary btn-sm" target="_blank"'); ?>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width='200'>Status </td>
+                            <td>
+                            <button class="btn btn-sm btn-success"><?php echo rename_status($row->status) ?></button>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td width='200'>Approval </td>
+                            <td>
+                                <input type="radio" name="status" value="8" id="status2" required>
+                                <label for="status2">Ditolak</label><br>
+                                <input type="radio" name="status" value="9" id="status3">
+                                <label for="status3">Revisi</label><br>
+                                <input type="radio" name="status" value="10" id="status4">
+                                <label for="status4">Acc</label>
+                            </td>
+                        </tr>
+        
+                        <tr>
+                            <td width='200'>Catatan </td>
+                            <td>
+                                <textarea class="form-control" name="catatan" id="catatan" required></textarea>
+                            </td>
+                        </tr>
+        
+                        <tr>
+                            <td></td>
+                            <td>
+                                <input type="hidden" name="id_pengajuan" value="<?php echo $row->id_pengajuan; ?>" /> 
+                                <button type="submit" class="btn btn-danger"><i class="fa fa-floppy-o"></i> Submit</button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+				</div>
+				<!-- footer modal -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+				</div>
+			</div>
+		</div>
+</div>
+<?php endforeach ?>
+<!-- End Modal -->
