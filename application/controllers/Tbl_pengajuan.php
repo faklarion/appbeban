@@ -118,6 +118,7 @@ class Tbl_pengajuan extends CI_Controller
                 'id_pengajuan' => $id_pengajuan,
                 'tanggal_update' => $now,
                 'status' => 1,
+                'catatan' => "Baru di Input",
             );
             
             $this->Tbl_pengajuan_model->insert_update($data_update);
@@ -189,6 +190,7 @@ class Tbl_pengajuan extends CI_Controller
                 'id_pengajuan' => $this->input->post('id_pengajuan', TRUE),
                 'tanggal_update' => $now,
                 'status' => $this->input->post('status', TRUE),
+                'catatan' => $this->input->post('catatan', TRUE),
             );
             
             $this->Tbl_pengajuan_model->insert_update($data_update);
@@ -234,6 +236,7 @@ class Tbl_pengajuan extends CI_Controller
                 'id_pengajuan' => $this->input->post('id_pengajuan', TRUE),
                 'tanggal_update' => $now,
                 'status' => $this->input->post('status', TRUE),
+                'catatan' => $this->input->post('catatan', TRUE),
             );
             
             $this->Tbl_pengajuan_model->insert_update($data_update);
@@ -279,6 +282,7 @@ class Tbl_pengajuan extends CI_Controller
                 'id_pengajuan' => $this->input->post('id_pengajuan', TRUE),
                 'tanggal_update' => $now,
                 'status' => $this->input->post('status', TRUE),
+                'catatan' => $this->input->post('catatan', TRUE),
             );
             
             $this->Tbl_pengajuan_model->insert_update($data_update);

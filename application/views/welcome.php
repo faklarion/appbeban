@@ -102,6 +102,7 @@
                                 <th>Tanggal Update</th>
                                 <th>Perihal</th>
                                 <th>Status</th>
+                                <th>Catatan</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -121,6 +122,7 @@
                                 </td>
                                 <td><?php echo $row->perihal ?></td>
                                 <td><button class="btn btn-sm btn-success"><?php echo rename_status($row->status) ?></button></td>
+                                <td><?php echo $row->catatan ?></td>
                             </tr>
                             <?php endforeach ?>
                         </tbody>

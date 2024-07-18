@@ -33,7 +33,7 @@ class Tbl_pengajuan_model extends CI_Model
 
     function get_all_update()
     {
-        $this->db->select('*, tbl_update.status');
+        $this->db->select('*, tbl_update.status, tbl_update.catatan');
         $this->db->join('tbl_pengajuan', 'tbl_pengajuan.id_pengajuan = tbl_update.id_pengajuan');
         $this->db->order_by('id_update', $this->order);
         $this->db->limit(10);
