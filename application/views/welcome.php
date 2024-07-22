@@ -94,8 +94,7 @@
             </div>
 
             <div class="box-body">
-                <div class="table-responsive">
-                    <table class="table no-margin">
+                    <table class="table no-margin" id="tabeldashboard">
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -127,8 +126,6 @@
                             <?php endforeach ?>
                         </tbody>
                     </table>
-                </div>
-
             </div>
 
             <div class="box-footer clearfix">

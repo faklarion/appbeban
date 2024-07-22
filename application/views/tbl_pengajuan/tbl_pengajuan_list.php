@@ -1,8 +1,3 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<link href="https://cdn.datatables.net/2.0.8/css/dataTables.bootstrap4.css" rel="stylesheet" />
-<script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
-<script src="https://cdn.datatables.net/2.0.8/js/dataTables.bootstrap4.js"></script>
-
 <div class="content-wrapper">
     <section class="content">
         <div class="row">
@@ -36,9 +31,8 @@
                 
             </div>
         </div>
-        <div style="width: 100%;">
-        <div class="table-responsive">
-        <table class="table table-bordered" id="example" style="margin-bottom: 10px">
+       
+        <table class="table table-striped table-bordered dt-responsive nowrap" id="example" style="margin-bottom: 10px">
             <thead>
                 <tr>
                     <th>No</th>
@@ -99,20 +93,11 @@
             </tbody>
         </table>
         </div>
-    </div>
-        </div>
                     </div>
             </div>
             </div>
     </section>
 </div>
-<script>
-    $(document).ready(function () {
-                $('#example').DataTable( {
-            responsive: true
-        } );
-    });
-</script>
 
 <!-- ModalGm -->
 <?php foreach ($tbl_pengajuan_data as $tbl_pengajuan) : ?>
