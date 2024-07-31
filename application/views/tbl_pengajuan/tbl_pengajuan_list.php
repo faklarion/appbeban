@@ -37,6 +37,7 @@
                 <tr>
                     <th>No</th>
                     <th>Perihal</th>
+                    <th>User</th>
                     <th>Tanggal Pengajuan</th>
                     <th>Keterangan</th>
                     <th>File</th>
@@ -53,10 +54,23 @@
                 <tr>
 			<td><?php echo ++$start ?></td>
 			<td><?php echo $tbl_pengajuan->perihal ?></td>
+            <td>
+                                    <?php 
+                                        if($tbl_pengajuan->status == 1) {
+                                            echo 'Admin';
+                                        } elseif(($tbl_pengajuan->status == 2) || ($tbl_pengajuan->status == 3) || ($tbl_pengajuan->status == 4)) {
+                                            echo 'GM Smartphone';
+                                        } elseif(($tbl_pengajuan->status == 5) || ($tbl_pengajuan->status == 6) || ($tbl_pengajuan->status == 7)) {
+                                            echo 'CEO';
+                                        } elseif(($tbl_pengajuan->status == 8) || ($tbl_pengajuan->status == 9) || ($tbl_pengajuan->status == 10)) {
+                                            echo 'Manager Keuangan';
+                                        }
+                                    ?>
+            </td>
 			<td><?php echo tgl_indo($tbl_pengajuan->tanggal_pengajuan) ?></td>
             <td><?php echo $tbl_pengajuan->keterangan ?></td>
 			<td><?php echo anchor(base_url('assets/berkas/'.$tbl_pengajuan->berkas),'<i class="fa fa-eye" aria-hidden="true"> Lihat File</i>','class="btn btn-primary btn-sm" target="_blank"'); ?></td>
-			<td><button class="btn btn-sm btn-success"><?php echo rename_status($tbl_pengajuan->status) ?></button></td>
+			<td><?php echo rename_status($tbl_pengajuan->status) ?></td>
 			<td><?php echo $tbl_pengajuan->catatan ?></td>
 			<td style="text-align:center" >
 				<?php 
@@ -139,7 +153,7 @@
                         <tr>
                             <td width='200'>Status </td>
                             <td>
-                            <button class="btn btn-sm btn-success"><?php echo rename_status($row->status) ?></button>
+                                <?php echo rename_status($row->status) ?>
                             </td>
                         </tr>
                         
@@ -222,7 +236,7 @@
                         <tr>
                             <td width='200'>Status </td>
                             <td>
-                            <button class="btn btn-sm btn-success"><?php echo rename_status($row->status) ?></button>
+                                <?php echo rename_status($row->status) ?>
                             </td>
                         </tr>
                         
@@ -305,7 +319,7 @@
                         <tr>
                             <td width='200'>Status </td>
                             <td>
-                            <button class="btn btn-sm btn-success"><?php echo rename_status($row->status) ?></button>
+                            <?php echo rename_status($row->status) ?>
                             </td>
                         </tr>
                         

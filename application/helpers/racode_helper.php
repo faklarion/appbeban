@@ -69,16 +69,16 @@ function rename_string_is_aktif($string){
 
 function rename_status($statusCode) {
     $status = [
-        1 => 'Input Admin',
-        2 => 'Ditolak (GM Smartphone)',
-        3 => 'Revisi (GM Smartphone)',
-        4 => 'Acc (GM Smartphone)',
-        5 => 'Ditolak (CEO)',
-        6 => 'Revisi (CEO)',
-        7 => 'Acc (CEO)',
-        8 => 'Ditolak (Manager Keuangan)',
-        9 => 'Revisi Manager Keuangan',
-        10 => 'Acc (Manager Keuangan)',
+        1 => '<button class="btn btn-sm btn-info">Input Admin</button>',
+        2 => '<button class="btn btn-sm btn-danger">Ditolak (GM Smartphone)</button>',
+        3 => '<button class="btn btn-sm btn-warning">Revisi (GM Smartphone)</button>',
+        4 => '<button class="btn btn-sm btn-success">Acc (GM Smartphone)</button>',
+        5 => '<button class="btn btn-sm btn-danger">Ditolak (CEO)</button>',
+        6 => '<button class="btn btn-sm btn-warning">Revisi (CEO)</button>',
+        7 => '<button class="btn btn-sm btn-success">Acc (CEO)</button>',
+        8 => '<button class="btn btn-sm btn-danger">Ditolak (Manager Keuangan)</button>',
+        9 => '<button class="btn btn-sm btn-warning">Revisi Manager Keuangan</button>',
+        10 => '<button class="btn btn-sm btn-success">Acc (Manager Keuangan)</button>',
     ];
     
     // Contoh penggunaan:

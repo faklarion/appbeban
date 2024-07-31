@@ -36,8 +36,26 @@ class Tbl_pengajuan_model extends CI_Model
         $this->db->select('*, tbl_update.status, tbl_update.catatan');
         $this->db->join('tbl_pengajuan', 'tbl_pengajuan.id_pengajuan = tbl_update.id_pengajuan');
         $this->db->order_by('id_update', $this->order);
-        $this->db->limit(10);
+       
         return $this->db->get('tbl_update')->result();
+    }
+
+    function get_all_by_status($status)
+    {
+        $today = date("Y-m-d");
+        $tomorrow = date("Y-m-d", strtotime("+1 day"));
+
+        // Kondisi: (tanggal_pengajuan adalah hari ini DAN status adalah 'acc') OR (tanggal_pengajuan adalah besok DAN status bukan 'acc')
+        $this->db->group_start();
+        $this->db->where('tanggal_pengajuan', $today);
+        $this->db->where('status', $status);
+        $this->db->group_end();
+        $this->db->or_group_start();
+        $this->db->where('tanggal_pengajuan', $tomorrow);
+        $this->db->where('status !=', $status);
+        $this->db->group_end();
+
+        return $this->db->get($this->table)->result();
     }
 
     // get data by id

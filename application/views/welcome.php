@@ -7,11 +7,12 @@
                     <div class="inner">
                         <h3>
                         <?php 
-                            $query = $this->db->query('SELECT * FROM tbl_pengajuan');
-                            echo $query->num_rows();  
+                            $query = $this->Tbl_pengajuan_model->get_all_by_status(1);
+                            
+                            echo count($query);  
                         ?>
                         </h3>
-                        <p>Total Pengajuan</p>
+                        <p>Total Pengajuan Masuk</p>
                     </div>
                     <div class="icon">
                         <i class="fa fa-archive"></i>
@@ -27,8 +28,8 @@
                     <div class="inner">
                         <h3>
                         <?php 
-                            $query = $this->db->query('SELECT * FROM tbl_pengajuan WHERE status = 4');
-                            echo $query->num_rows();  
+                            $query = $this->Tbl_pengajuan_model->get_all_by_status(4);
+                            echo count($query);  
                         ?>
                         </h3>
                         <p>Jumlah ACC GM Smartphone</p>
@@ -47,8 +48,8 @@
                     <div class="inner">
                         <h3>
                         <?php 
-                            $query = $this->db->query('SELECT * FROM tbl_pengajuan WHERE status = 7');
-                            echo $query->num_rows();  
+                            $query = $this->Tbl_pengajuan_model->get_all_by_status(7);
+                            echo count($query); 
                         ?>
                         </h3>
                         <p>Jumlah ACC CEO</p>
@@ -67,8 +68,8 @@
                     <div class="inner">
                         <h3>
                         <?php 
-                            $query = $this->db->query('SELECT * FROM tbl_pengajuan WHERE status = 10');
-                            echo $query->num_rows();  
+                            $query = $this->Tbl_pengajuan_model->get_all_by_status(10);
+                            echo count($query); 
                         ?>
                         </h3>
                         <p>Jumlah ACC Manager Keuangan</p>
@@ -84,7 +85,7 @@
 
         <div class="box box-info">
             <div class="box-header with-border">
-                <h3 class="box-title">Latest Updates</h3>
+                <h3 class="box-title">DAFTAR RIWAYAT APPROVAL</h3>
                 <div class="box-tools pull-right">
                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                     </button>
@@ -98,8 +99,9 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Tanggal Update</th>
                                 <th>Perihal</th>
+                                <th>User</th>
+                                <th>Tanggal Update</th>
                                 <th>Status</th>
                                 <th>Catatan</th>
                             </tr>
@@ -111,6 +113,20 @@
                             ?>
                             <tr>
                                 <td><?php echo $no++ ?></td>
+                                <td><?php echo $row->perihal ?></td>
+                                <td>
+                                    <?php 
+                                        if($row->status == 1) {
+                                            echo 'Admin';
+                                        } elseif(($row->status == 2) || ($row->status == 3) || ($row->status == 4)) {
+                                            echo 'GM Smartphone';
+                                        } elseif(($row->status == 5) || ($row->status == 6) || ($row->status == 7)) {
+                                            echo 'CEO';
+                                        } elseif(($row->status == 8) || ($row->status == 9) || ($row->status == 10)) {
+                                            echo 'Manager Keuangan';
+                                        }
+                                    ?>
+                                </td>
                                 <td>
                                     <?php 
                                         $dateString = $row->tanggal_update; // Your input date and time string
@@ -119,8 +135,7 @@
                                         echo $indonesianDate;
                                     ?>
                                 </td>
-                                <td><?php echo $row->perihal ?></td>
-                                <td><button class="btn btn-sm btn-success"><?php echo rename_status($row->status) ?></button></td>
+                                <td><?php echo rename_status($row->status) ?></td>
                                 <td><?php echo $row->catatan ?></td>
                             </tr>
                             <?php endforeach ?>
