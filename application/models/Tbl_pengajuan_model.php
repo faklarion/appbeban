@@ -42,6 +42,7 @@ class Tbl_pengajuan_model extends CI_Model
 
     function get_all_by_status($status)
     {
+        date_default_timezone_set('Asia/Makassar'); # add your city to set local time zone
         $today = date("Y-m-d");
         $tomorrow = date("Y-m-d", strtotime("+1 day"));
 
@@ -51,8 +52,8 @@ class Tbl_pengajuan_model extends CI_Model
         $this->db->where('status', $status);
         $this->db->group_end();
         $this->db->or_group_start();
-        $this->db->where('tanggal_pengajuan', $tomorrow);
-        $this->db->where('status !=', $status);
+        $this->db->where('status', $status);
+        $this->db->where('tanggal_pengajuan <', $today);
         $this->db->group_end();
 
         return $this->db->get($this->table)->result();
