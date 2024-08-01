@@ -55,7 +55,6 @@ class Tbl_pengajuan_model extends CI_Model
         $this->db->where('status', $status);
         $this->db->where('tanggal_pengajuan <', $today);
         $this->db->group_end();
-
         return $this->db->get($this->table)->result();
     }
 
