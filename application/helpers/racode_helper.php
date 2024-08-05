@@ -67,6 +67,28 @@ function rename_string_is_aktif($string){
         return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
     }
 
+    function getUserName($status) {
+        switch($status) {
+            case 1:
+                return 'Admin';
+            case 2:
+            case 3:
+            case 4:
+                return 'GM Smartphone';
+            case 5:
+            case 6:
+            case 7:
+                return 'CEO';
+            case 8:
+            case 9:
+            case 10:
+                return 'Manager Keuangan';
+            default:
+                return 'Unknown';
+        }
+    }
+
+    
 function rename_status($statusCode) {
     $status = [
         1 => '<button class="btn btn-sm btn-info">Input Admin</button>',

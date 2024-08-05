@@ -46,6 +46,15 @@ class Tbl_pengajuan extends CI_Controller
         $this->template->load('template', 'tbl_pengajuan/tbl_pengajuan_list', $data);
     }
 
+    public function laporan() {
+        $data = array(
+            'start' => 0,
+            'tbl_pengajuan_data' => $this->Tbl_pengajuan_model->get_all_laporan(),
+        );
+
+        $this->template->load('template', 'tbl_pengajuan/tbl_pengajuan_laporan', $data);
+    }
+
     public function read($id)
     {
         $row = $this->Tbl_pengajuan_model->get_by_id($id);

@@ -2,6 +2,7 @@
     <section class="content">
         <?php echo alert('alert-info', 'Selamat Datang', 'Selamat Datang Di Halaman Utama Aplikasi') ?>
         <div class="row">
+            <?php if(($this->session->userdata('id_user_level') == 1) || ($this->session->userdata('id_user_level') == 2)) { ?>
             <div class="col-lg-3 col-xs-6">
                 <div class="small-box bg-aqua">
                     <div class="inner">
@@ -21,8 +22,9 @@
                             class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
+            <?php } ?>
 
-            <?php if(($this->session->userdata('id_user_level') == 1) || ($this->session->userdata('id_user_level') == 2)) { ?>
+            <?php if(($this->session->userdata('id_user_level') == 1) || ($this->session->userdata('id_user_level') == 3) || ($this->session->userdata('id_user_level') == 2)) { ?>
             <div class="col-lg-3 col-xs-6">
                 <div class="small-box bg-green">
                     <div class="inner">
@@ -42,7 +44,7 @@
             </div>
             <?php } ?>
 
-            <?php if(($this->session->userdata('id_user_level') == 1) || ($this->session->userdata('id_user_level') == 3)) { ?>
+            <?php if(($this->session->userdata('id_user_level') == 1) || ($this->session->userdata('id_user_level') == 3) || ($this->session->userdata('id_user_level') == 4)) { ?>
             <div class="col-lg-3 col-xs-6">
                 <div class="small-box bg-yellow">
                     <div class="inner">
@@ -68,7 +70,7 @@
                     <div class="inner">
                         <h3>
                         <?php 
-                            $query = $this->Tbl_pengajuan_model->get_all_by_status(10);
+                            $query = $this->Tbl_pengajuan_model->get_all_by_status_keuangan(10);
                             echo count($query); 
                         ?>
                         </h3>

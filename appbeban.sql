@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 31 Jul 2024 pada 07.10
+-- Waktu pembuatan: 05 Agu 2024 pada 07.13
 -- Versi server: 8.0.30
 -- Versi PHP: 7.4.33
 
@@ -41,7 +41,11 @@ INSERT INTO `tbl_hak_akses` (`id`, `id_user_level`, `id_menu`) VALUES
 (31, 1, 10),
 (32, 2, 10),
 (33, 3, 10),
-(34, 4, 10);
+(34, 4, 10),
+(35, 1, 11),
+(36, 2, 11),
+(37, 3, 11),
+(38, 4, 11);
 
 -- --------------------------------------------------------
 
@@ -67,7 +71,8 @@ INSERT INTO `tbl_menu` (`id_menu`, `title`, `url`, `icon`, `is_main_menu`, `is_a
 (2, 'KELOLA PENGGUNA', 'user', 'fa fa-user-o', 0, 'y'),
 (3, 'level PENGGUNA', 'userlevel', 'fa fa-users', 0, 'y'),
 (9, 'Contoh Form', 'welcome/form', 'fa fa-id-card', 0, 'y'),
-(10, 'data pengajuan', 'tbl_pengajuan', 'fa fa-check', 0, 'y');
+(10, 'data pengajuan', 'tbl_pengajuan', 'fa fa-check', 0, 'y'),
+(11, 'Laporan pengajuan', 'tbl_pengajuan/laporan', 'fa fa-archive', 0, 'y');
 
 -- --------------------------------------------------------
 
@@ -94,8 +99,10 @@ INSERT INTO `tbl_pengajuan` (`id_pengajuan`, `perihal`, `tanggal_pengajuan`, `be
 (5, 'Beban', '2024-06-24', 'IMG_6757.jpeg', 10, 'test', ''),
 (6, 'test', '2024-06-24', 'IMG-20240624-WA0010.jpg', 10, 'Mantab', ''),
 (7, 'test juli', '2024-07-08', 'Yuta_Okkotsu_29.jpg', 10, 'oke', 'test'),
-(8, 'test agustussss', '2024-07-31', 'apple-iphone-se-2020.jpg', 4, 'oke gas', 'test'),
-(9, 'test agustussss 2', '2024-07-31', 'apple-iphone-se-2022.jpg', 1, 'Baru di Input', 'sdadsa');
+(8, 'test agustussss', '2024-07-31', 'apple-iphone-se-2020.jpg', 7, 'sadda', 'test'),
+(9, 'test agustussss 2', '2024-07-31', 'apple-iphone-se-2022.jpg', 1, 'Baru di Input', 'sdadsa'),
+(10, 'test 3', '2024-08-01', 'Logo_Aruhan.jpg', 1, 'Baru di Input', 'dsadad'),
+(11, '5 agustus', '2024-08-05', 're73675-ce76.png', 1, 'Baru di Input', 'sadsa');
 
 -- --------------------------------------------------------
 
@@ -142,7 +149,10 @@ INSERT INTO `tbl_update` (`id_update`, `id_pengajuan`, `tanggal_update`, `status
 (5, 6, '2024-07-18 10:16:33', 10, 'Mantab'),
 (6, 8, '2024-07-31 14:54:12', 1, 'Baru di Input'),
 (7, 8, '2024-07-31 14:55:41', 4, 'oke gas'),
-(8, 9, '2024-07-31 14:56:07', 1, 'Baru di Input');
+(8, 9, '2024-07-31 14:56:07', 1, 'Baru di Input'),
+(9, 10, '2024-08-01 11:17:07', 1, 'Baru di Input'),
+(10, 8, '2024-08-01 11:38:50', 7, 'sadda'),
+(11, 11, '2024-08-05 14:12:31', 1, 'Baru di Input');
 
 -- --------------------------------------------------------
 
@@ -245,19 +255,19 @@ ALTER TABLE `tbl_user_level`
 -- AUTO_INCREMENT untuk tabel `tbl_hak_akses`
 --
 ALTER TABLE `tbl_hak_akses`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_menu`
 --
 ALTER TABLE `tbl_menu`
-  MODIFY `id_menu` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_menu` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_pengajuan`
 --
 ALTER TABLE `tbl_pengajuan`
-  MODIFY `id_pengajuan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_pengajuan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_setting`
@@ -269,7 +279,7 @@ ALTER TABLE `tbl_setting`
 -- AUTO_INCREMENT untuk tabel `tbl_update`
 --
 ALTER TABLE `tbl_update`
-  MODIFY `id_update` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_update` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_user`
