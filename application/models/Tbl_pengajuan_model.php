@@ -51,29 +51,27 @@ class Tbl_pengajuan_model extends CI_Model
     {
         date_default_timezone_set('Asia/Makassar'); # add your city to set local time zone
         $today = date("Y-m-d");
-        $tomorrow = date("Y-m-d", strtotime("+1 day"));
 
-        // Kondisi: (tanggal_pengajuan adalah hari ini DAN status adalah 'acc') OR (tanggal_pengajuan adalah besok DAN status bukan 'acc')
+        // Kondisi: (tanggal_acc adalah hari ini DAN status adalah 'acc') OR (tanggal_acc adalah besok DAN status bukan 'acc')
         $this->db->group_start();
-        $this->db->where('tanggal_pengajuan', $today);
+        $this->db->where('tanggal_acc', $today);
         $this->db->where('status', $status);
         $this->db->group_end();
         $this->db->or_group_start();
         $this->db->where('status', $status);
-        $this->db->where('tanggal_pengajuan <', $today);
+        $this->db->where('tanggal_acc <', $today);
         $this->db->group_end();
         return $this->db->get($this->table)->result();
     }
 
 
-    function get_all_by_status_keuangan($status)
+    function get_all_by_status_2($status)
     {
         date_default_timezone_set('Asia/Makassar'); # add your city to set local time zone
         $today = date("Y-m-d");
-        $tomorrow = date("Y-m-d", strtotime("+1 day"));
 
-        // Kondisi: (tanggal_pengajuan adalah hari ini DAN status adalah 'acc') OR (tanggal_pengajuan adalah besok DAN status bukan 'acc')
-        $this->db->where('tanggal_pengajuan', $today);
+        // Kondisi: (tanggal_acc adalah hari ini DAN status adalah 'acc') OR (tanggal_acc adalah besok DAN status bukan 'acc')
+        $this->db->where('tanggal_acc', $today);
         $this->db->where('status', $status);
         
         return $this->db->get($this->table)->result();

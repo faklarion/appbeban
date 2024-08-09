@@ -2,87 +2,203 @@
     <section class="content">
         <?php echo alert('alert-info', 'Selamat Datang', 'Selamat Datang Di Halaman Utama Aplikasi') ?>
         <div class="row">
-            <?php if(($this->session->userdata('id_user_level') == 1) || ($this->session->userdata('id_user_level') == 2)) { ?>
-            <div class="col-lg-3 col-xs-6">
-                <div class="small-box bg-aqua">
-                    <div class="inner">
-                        <h3>
-                        <?php 
-                            $query = $this->Tbl_pengajuan_model->get_all_by_status(1);
-                            
-                            echo count($query);  
-                        ?>
-                        </h3>
-                        <p>Total Pengajuan Masuk</p>
+            <!-- Dashboard Admin-->
+            <?php if($this->session->userdata('id_user_level') == 1) { ?>
+                <div class="col-lg-3 col-xs-6">
+                    <div class="small-box bg-aqua">
+                        <div class="inner">
+                            <h3>
+                            <?php 
+                                $query = $this->Tbl_pengajuan_model->get_all_by_status(1);
+                                
+                                echo count($query);  
+                            ?>
+                            </h3>
+                            <p>Total Pengajuan Masuk</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-archive"></i>
+                        </div>
+                        <a href="<?php echo site_url('tbl_pengajuan') ?>" class="small-box-footer">More info <i
+                                class="fa fa-arrow-circle-right"></i></a>
                     </div>
-                    <div class="icon">
-                        <i class="fa fa-archive"></i>
-                    </div>
-                    <a href="<?php echo site_url('tbl_pengajuan') ?>" class="small-box-footer">More info <i
-                            class="fa fa-arrow-circle-right"></i></a>
                 </div>
-            </div>
+                <div class="col-lg-3 col-xs-6">
+                    <div class="small-box bg-green">
+                        <div class="inner">
+                            <h3>
+                            <?php
+                                    $query = $this->Tbl_pengajuan_model->get_all_by_status_2(4);
+                                    echo count($query);
+                                    ?>
+                                </h3>
+                                <p>Jumlah ACC GM Smartphone</p>
+                        </div>
+                            <div class="icon">
+                                <i class="fa fa-check"></i>
+                            </div>
+                            <a href="<?php echo site_url('tbl_pengajuan') ?>" class="small-box-footer">More info <i
+                                    class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-xs-6">
+                    <div class="small-box bg-yellow">
+                        <div class="inner">
+                            <h3>
+                            <?php 
+                                $query = $this->Tbl_pengajuan_model->get_all_by_status_2(7);
+                                echo count($query); 
+                            ?>
+                            </h3>
+                            <p>Jumlah ACC CEO</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-check"></i>
+                        </div>
+                        <a href="<?php echo site_url('tbl_pengajuan') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-xs-6">
+                    <div class="small-box bg-red">
+                        <div class="inner">
+                            <h3>
+                            <?php 
+                                $query = $this->Tbl_pengajuan_model->get_all_by_status_2(10);
+                                echo count($query); 
+                            ?>
+                            </h3>
+                            <p>Jumlah ACC Manager Keuangan</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-check"></i>
+                        </div>
+                        <a href="<?php echo site_url('tbl_pengajuan') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
             <?php } ?>
+            <!-- END Dashboard Admin -->
 
-            <?php if(($this->session->userdata('id_user_level') == 1) || ($this->session->userdata('id_user_level') == 3) || ($this->session->userdata('id_user_level') == 2)) { ?>
-            <div class="col-lg-3 col-xs-6">
-                <div class="small-box bg-green">
-                    <div class="inner">
-                        <h3>
-                        <?php 
-                            $query = $this->Tbl_pengajuan_model->get_all_by_status(4);
-                            echo count($query);  
-                        ?>
-                        </h3>
-                        <p>Jumlah ACC GM Smartphone</p>
+            <!-- Dashboard GM Syihab-->
+            <?php if($this->session->userdata('id_user_level') == 2) { ?>
+                <div class="col-lg-3 col-xs-6">
+                    <div class="small-box bg-aqua">
+                        <div class="inner">
+                            <h3>
+                            <?php 
+                                $query = $this->Tbl_pengajuan_model->get_all_by_status(1);
+                                
+                                echo count($query);  
+                            ?>
+                            </h3>
+                            <p>Total Pengajuan Masuk</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-archive"></i>
+                        </div>
+                        <a href="<?php echo site_url('tbl_pengajuan') ?>" class="small-box-footer">More info <i
+                                class="fa fa-arrow-circle-right"></i></a>
                     </div>
-                    <div class="icon">
-                        <i class="fa fa-check"></i>
-                    </div>
-                    <a href="<?php echo site_url('tbl_pengajuan') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
-            </div>
+                <div class="col-lg-3 col-xs-6">
+                    <div class="small-box bg-green">
+                        <div class="inner">
+                            <h3>
+                            <?php
+                                    $query = $this->Tbl_pengajuan_model->get_all_by_status_2(4);
+                                    echo count($query);
+                                    ?>
+                                </h3>
+                                <p>Jumlah ACC GM Smartphone</p>
+                        </div>
+                            <div class="icon">
+                                <i class="fa fa-check"></i>
+                            </div>
+                            <a href="<?php echo site_url('tbl_pengajuan') ?>" class="small-box-footer">More info <i
+                                    class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
             <?php } ?>
+            <!-- END Dashboard GM Syihab -->
 
-            <?php if(($this->session->userdata('id_user_level') == 1) || ($this->session->userdata('id_user_level') == 3) || ($this->session->userdata('id_user_level') == 4)) { ?>
-            <div class="col-lg-3 col-xs-6">
-                <div class="small-box bg-yellow">
-                    <div class="inner">
-                        <h3>
-                        <?php 
-                            $query = $this->Tbl_pengajuan_model->get_all_by_status(7);
-                            echo count($query); 
-                        ?>
-                        </h3>
-                        <p>Jumlah ACC CEO</p>
+            <!-- Dashboard CEO -->
+            <?php if($this->session->userdata('id_user_level') == 3) { ?>
+                <div class="col-lg-3 col-xs-6">
+                    <div class="small-box bg-green">
+                        <div class="inner">
+                            <h3>
+                            <?php
+                                    $query = $this->Tbl_pengajuan_model->get_all_by_status(4);
+                                    echo count($query);
+                                    ?>
+                                </h3>
+                                <p>Jumlah ACC GM Smartphone</p>
+                        </div>
+                            <div class="icon">
+                                <i class="fa fa-check"></i>
+                            </div>
+                            <a href="<?php echo site_url('tbl_pengajuan') ?>" class="small-box-footer">More info <i
+                                    class="fa fa-arrow-circle-right"></i></a>
                     </div>
-                    <div class="icon">
-                        <i class="fa fa-check"></i>
-                    </div>
-                    <a href="<?php echo site_url('tbl_pengajuan') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
-            </div>
+                <div class="col-lg-3 col-xs-6">
+                    <div class="small-box bg-yellow">
+                        <div class="inner">
+                            <h3>
+                            <?php 
+                                $query = $this->Tbl_pengajuan_model->get_all_by_status_2(7);
+                                echo count($query); 
+                            ?>
+                            </h3>
+                            <p>Jumlah ACC CEO</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-check"></i>
+                        </div>
+                        <a href="<?php echo site_url('tbl_pengajuan') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
             <?php } ?>
+            <!-- END Dashboard CEO -->
             
-            <?php if(($this->session->userdata('id_user_level') == 1) || ($this->session->userdata('id_user_level') == 4)) { ?>
-            <div class="col-lg-3 col-xs-6">
-                <div class="small-box bg-red">
-                    <div class="inner">
-                        <h3>
-                        <?php 
-                            $query = $this->Tbl_pengajuan_model->get_all_by_status_keuangan(10);
-                            echo count($query); 
-                        ?>
-                        </h3>
-                        <p>Jumlah ACC Manager Keuangan</p>
+            <!-- Dashboard Keuangan -->
+            <?php if($this->session->userdata('id_user_level') == 4) { ?>
+                <div class="col-lg-3 col-xs-6">
+                    <div class="small-box bg-yellow">
+                        <div class="inner">
+                            <h3>
+                            <?php 
+                                $query = $this->Tbl_pengajuan_model->get_all_by_status(7);
+                                echo count($query); 
+                            ?>
+                            </h3>
+                            <p>Jumlah ACC CEO</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-check"></i>
+                        </div>
+                        <a href="<?php echo site_url('tbl_pengajuan') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
-                    <div class="icon">
-                        <i class="fa fa-check"></i>
-                    </div>
-                    <a href="<?php echo site_url('tbl_pengajuan') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
-            </div>
+                <div class="col-lg-3 col-xs-6">
+                    <div class="small-box bg-red">
+                        <div class="inner">
+                            <h3>
+                            <?php 
+                                $query = $this->Tbl_pengajuan_model->get_all_by_status_2(10);
+                                echo count($query); 
+                            ?>
+                            </h3>
+                            <p>Jumlah ACC Manager Keuangan</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-check"></i>
+                        </div>
+                        <a href="<?php echo site_url('tbl_pengajuan') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
             <?php } ?>
+            <!-- END Dashboard Keuangan -->
+
         </div>
 
         <div class="box box-info">

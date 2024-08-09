@@ -106,6 +106,8 @@ class Tbl_pengajuan extends CI_Controller
     {
         $this->_rules();
         $berkas = $this->upload_file();
+        date_default_timezone_set('Asia/Makassar'); # add your city to set local time zone
+        $nowHari = date('Y-m-d');
 
         if ($this->form_validation->run() == FALSE) {
             $this->create();
@@ -113,6 +115,7 @@ class Tbl_pengajuan extends CI_Controller
             $data = array(
                 'perihal' => $this->input->post('perihal', TRUE),
                 'tanggal_pengajuan' => $this->input->post('tanggal_pengajuan', TRUE),
+                'tanggal_acc' => $nowHari,
                 'keterangan' => $this->input->post('keterangan', TRUE),
                 'berkas' => $berkas['file_name'],
                 'status' => 1,
@@ -186,14 +189,16 @@ class Tbl_pengajuan extends CI_Controller
 
     public function acc_gm_action()
     {
+            date_default_timezone_set('Asia/Makassar'); # add your city to set local time zone
+            $now     = date('Y-m-d H:i:s');
+            $nowHari = date('Y-m-d');
       
             $data = array(
                 'status' => $this->input->post('status', TRUE),
                 'catatan' => $this->input->post('catatan', TRUE),
+                'tanggal_acc' => $nowHari,
             );
 
-            date_default_timezone_set('Asia/Makassar'); # add your city to set local time zone
-            $now = date('Y-m-d H:i:s');
 
             $data_update = array(
                 'id_pengajuan' => $this->input->post('id_pengajuan', TRUE),
@@ -233,13 +238,15 @@ class Tbl_pengajuan extends CI_Controller
 
     public function acc_ceo_action()
     {
+            date_default_timezone_set('Asia/Makassar'); # add your city to set local time zone
+            $now     = date('Y-m-d H:i:s');
+            $nowHari = date('Y-m-d');
+    
             $data = array(
                 'status' => $this->input->post('status', TRUE),
                 'catatan' => $this->input->post('catatan', TRUE),
+                'tanggal_acc' => $nowHari,
             );
-
-            date_default_timezone_set('Asia/Makassar'); # add your city to set local time zone
-            $now = date('Y-m-d H:i:s');
 
             $data_update = array(
                 'id_pengajuan' => $this->input->post('id_pengajuan', TRUE),
@@ -279,13 +286,15 @@ class Tbl_pengajuan extends CI_Controller
 
     public function acc_keuangan_action()
     {
+            date_default_timezone_set('Asia/Makassar'); # add your city to set local time zone
+            $now     = date('Y-m-d H:i:s');
+            $nowHari = date('Y-m-d');
+    
             $data = array(
                 'status' => $this->input->post('status', TRUE),
                 'catatan' => $this->input->post('catatan', TRUE),
+                'tanggal_acc' => $nowHari,
             );
-
-            date_default_timezone_set('Asia/Makassar'); # add your city to set local time zone
-            $now = date('Y-m-d H:i:s');
 
             $data_update = array(
                 'id_pengajuan' => $this->input->post('id_pengajuan', TRUE),

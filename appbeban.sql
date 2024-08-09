@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 05 Agu 2024 pada 07.13
+-- Waktu pembuatan: 09 Agu 2024 pada 01.33
 -- Versi server: 8.0.30
 -- Versi PHP: 7.4.33
 
@@ -87,22 +87,23 @@ CREATE TABLE `tbl_pengajuan` (
   `berkas` text COLLATE utf8mb4_general_ci NOT NULL,
   `status` int NOT NULL,
   `catatan` text COLLATE utf8mb4_general_ci NOT NULL,
-  `keterangan` text COLLATE utf8mb4_general_ci NOT NULL
+  `keterangan` text COLLATE utf8mb4_general_ci NOT NULL,
+  `tanggal_acc` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `tbl_pengajuan`
 --
 
-INSERT INTO `tbl_pengajuan` (`id_pengajuan`, `perihal`, `tanggal_pengajuan`, `berkas`, `status`, `catatan`, `keterangan`) VALUES
-(4, 'Festival Musik', '2024-06-11', 'logo_zed2.png', 10, 'Sudah di acc di erzap', ''),
-(5, 'Beban', '2024-06-24', 'IMG_6757.jpeg', 10, 'test', ''),
-(6, 'test', '2024-06-24', 'IMG-20240624-WA0010.jpg', 10, 'Mantab', ''),
-(7, 'test juli', '2024-07-08', 'Yuta_Okkotsu_29.jpg', 10, 'oke', 'test'),
-(8, 'test agustussss', '2024-07-31', 'apple-iphone-se-2020.jpg', 7, 'sadda', 'test'),
-(9, 'test agustussss 2', '2024-07-31', 'apple-iphone-se-2022.jpg', 1, 'Baru di Input', 'sdadsa'),
-(10, 'test 3', '2024-08-01', 'Logo_Aruhan.jpg', 1, 'Baru di Input', 'dsadad'),
-(11, '5 agustus', '2024-08-05', 're73675-ce76.png', 1, 'Baru di Input', 'sadsa');
+INSERT INTO `tbl_pengajuan` (`id_pengajuan`, `perihal`, `tanggal_pengajuan`, `berkas`, `status`, `catatan`, `keterangan`, `tanggal_acc`) VALUES
+(4, 'Festival Musik', '2024-06-11', 'logo_zed2.png', 10, 'Sudah di acc di erzap', '', '2024-06-11'),
+(5, 'Beban', '2024-06-24', 'IMG_6757.jpeg', 10, 'test', '', '2024-06-24'),
+(6, 'test', '2024-06-24', 'IMG-20240624-WA0010.jpg', 10, 'Mantab', '', '2024-06-24'),
+(7, 'test juli', '2024-07-08', 'Yuta_Okkotsu_29.jpg', 10, 'oke', 'test', '2024-07-08'),
+(8, 'test agustussss', '2024-07-31', 'apple-iphone-se-2020.jpg', 7, 'sadda', 'test', '2024-07-31'),
+(9, 'test agustussss 2', '2024-07-31', 'apple-iphone-se-2022.jpg', 1, 'Baru di Input', 'sdadsa', '2024-07-31'),
+(10, 'test 3', '2024-08-01', 'Logo_Aruhan.jpg', 1, 'Baru di Input', 'dsadad', '2024-08-01'),
+(11, '5 agustus', '2024-08-05', 're73675-ce76.png', 10, 'ok', 'sadsa', '2024-08-09');
 
 -- --------------------------------------------------------
 
@@ -152,7 +153,10 @@ INSERT INTO `tbl_update` (`id_update`, `id_pengajuan`, `tanggal_update`, `status
 (8, 9, '2024-07-31 14:56:07', 1, 'Baru di Input'),
 (9, 10, '2024-08-01 11:17:07', 1, 'Baru di Input'),
 (10, 8, '2024-08-01 11:38:50', 7, 'sadda'),
-(11, 11, '2024-08-05 14:12:31', 1, 'Baru di Input');
+(11, 11, '2024-08-05 14:12:31', 1, 'Baru di Input'),
+(12, 11, '2024-08-09 09:31:05', 4, 'ok'),
+(13, 11, '2024-08-09 09:31:38', 7, 'lanjut'),
+(14, 11, '2024-08-09 09:32:09', 10, 'ok');
 
 -- --------------------------------------------------------
 
@@ -279,7 +283,7 @@ ALTER TABLE `tbl_setting`
 -- AUTO_INCREMENT untuk tabel `tbl_update`
 --
 ALTER TABLE `tbl_update`
-  MODIFY `id_update` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_update` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_user`
