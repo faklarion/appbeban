@@ -353,6 +353,12 @@
         });
     </script>
     <script>
+        $(document).ready(function() {
+            $('#tableBelumAcc').DataTable();
+            $('#tableSudahAcc').DataTable();
+        });
+    </script>
+    <script>
         $(document).ready(function () {
             $('#tabeldashboard').DataTable({
                 responsive: true

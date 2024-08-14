@@ -154,3 +154,65 @@ function autocomplate_json($table,$field){
     }
     echo json_encode($return_arr);
 }
+
+function get_user_role($status) {
+    switch ($status) {
+        case 1:
+            return 'Admin';
+        case 2:
+        case 3:
+        case 4:
+            return 'GM Smartphone';
+        case 5:
+        case 6:
+        case 7:
+            return 'CEO';
+        case 8:
+        case 9:
+        case 10:
+            return 'Manager Keuangan';
+        default:
+            return 'Unknown Role';
+    }
+}
+
+function get_action_buttons($tbl_pengajuan, $user_level) {
+    $buttons = '';
+
+    // Jika user level adalah Admin
+    if ($user_level == 1) {
+        if (in_array($tbl_pengajuan->status, [1, 3, 6, 9])) {
+            $buttons .= anchor(site_url('tbl_pengajuan/update/' . $tbl_pengajuan->id_pengajuan), 
+                               '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>', 
+                               'class="btn btn-danger btn-sm"'); 
+            $buttons .= '  '; 
+            $buttons .= anchor(site_url('tbl_pengajuan/delete/' . $tbl_pengajuan->id_pengajuan), 
+                               '<i class="fa fa-trash-o" aria-hidden="true"></i>', 
+                               'class="btn btn-danger btn-sm" Delete onclick="javascript: return confirm(\'Are You Sure ?\')"');
+        }
+    }
+
+    // Jika user level adalah GM Smartphone
+    if ($user_level == 2) {
+        if ($tbl_pengajuan->status == 1) {
+            $buttons .= '<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modalGm' . $tbl_pengajuan->id_pengajuan . '"><i class="fa fa-check"></i></button>';
+        }
+    }
+
+    // Jika user level adalah CEO
+    if ($user_level == 3) {
+        if ($tbl_pengajuan->status == 4) {
+            $buttons .= '<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modalCeo' . $tbl_pengajuan->id_pengajuan . '"><i class="fa fa-check"></i></button>';
+        }
+    }
+
+    // Jika user level adalah Manager Keuangan
+    if ($user_level == 4) {
+        if ($tbl_pengajuan->status == 7) {
+            $buttons .= '<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modalKeuangan' . $tbl_pengajuan->id_pengajuan . '"><i class="fa fa-check"></i></button>';
+        }
+    }
+
+    return $buttons;
+}
+

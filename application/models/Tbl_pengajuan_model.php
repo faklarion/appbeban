@@ -40,8 +40,12 @@ class Tbl_pengajuan_model extends CI_Model
 
     function get_all_update()
     {
+        date_default_timezone_set('Asia/Makassar'); # add your city to set local time zone
+        $today = date("Y-m-d");
+
         $this->db->select('*, tbl_update.status, tbl_update.catatan');
         $this->db->join('tbl_pengajuan', 'tbl_pengajuan.id_pengajuan = tbl_update.id_pengajuan');
+        $this->db->where('DATE(tanggal_update)', $today);
         $this->db->order_by('id_update', $this->order);
        
         return $this->db->get('tbl_update')->result();
@@ -73,6 +77,18 @@ class Tbl_pengajuan_model extends CI_Model
         // Kondisi: (tanggal_acc adalah hari ini DAN status adalah 'acc') OR (tanggal_acc adalah besok DAN status bukan 'acc')
         $this->db->where('tanggal_acc', $today);
         $this->db->where('status', $status);
+        
+        return $this->db->get($this->table)->result();
+    }
+
+    function get_all_by_status_between($status1)
+    {
+        date_default_timezone_set('Asia/Makassar'); # add your city to set local time zone
+        $today = date("Y-m-d");
+
+        // Kondisi: (tanggal_acc adalah hari ini DAN status adalah 'acc') OR (tanggal_acc adalah besok DAN status bukan 'acc')
+        $this->db->where('tanggal_acc', $today);
+        $this->db->where("status > $status1");
         
         return $this->db->get($this->table)->result();
     }

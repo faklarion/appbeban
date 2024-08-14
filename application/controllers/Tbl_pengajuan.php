@@ -8,7 +8,6 @@ class Tbl_pengajuan extends CI_Controller
     function __construct()
     {
         parent::__construct();
-        is_login();
         $this->load->model('Tbl_pengajuan_model');
         $this->load->model('User_model');
         $this->load->library('form_validation');
@@ -135,7 +134,7 @@ class Tbl_pengajuan extends CI_Controller
             
             $this->Tbl_pengajuan_model->insert_update($data_update);
             $this->session->set_flashdata('message', 'Create Record Success !');
-            redirect(site_url('tbl_pengajuan'));
+            redirect(site_url('welcome'));
         }
     }
 
@@ -183,7 +182,7 @@ class Tbl_pengajuan extends CI_Controller
             $this->template->load('template', 'tbl_pengajuan/tbl_pengajuan_acc_gm', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
-            redirect(site_url('tbl_pengajuan'));
+            redirect(site_url('welcome'));
         }
     }
 
@@ -210,7 +209,7 @@ class Tbl_pengajuan extends CI_Controller
             $this->Tbl_pengajuan_model->insert_update($data_update);
             $this->Tbl_pengajuan_model->update($this->input->post('id_pengajuan', TRUE), $data);
             $this->session->set_flashdata('message', 'Update Record Success !');
-            redirect(site_url('tbl_pengajuan'));
+            redirect(site_url('welcome'));
     }
 
     public function acc_ceo($id)
@@ -232,7 +231,7 @@ class Tbl_pengajuan extends CI_Controller
             $this->template->load('template', 'tbl_pengajuan/tbl_pengajuan_acc_ceo', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
-            redirect(site_url('tbl_pengajuan'));
+            redirect(site_url('welcome'));
         }
     }
 
@@ -258,7 +257,7 @@ class Tbl_pengajuan extends CI_Controller
             $this->Tbl_pengajuan_model->insert_update($data_update);
             $this->Tbl_pengajuan_model->update($this->input->post('id_pengajuan', TRUE), $data);
             $this->session->set_flashdata('message', 'Update Record Success !');
-            redirect(site_url('tbl_pengajuan'));
+            redirect(site_url('welcome'));
     }
 
     public function acc_keuangan($id)
@@ -280,7 +279,7 @@ class Tbl_pengajuan extends CI_Controller
             $this->template->load('template', 'tbl_pengajuan/tbl_pengajuan_acc_keuangan', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
-            redirect(site_url('tbl_pengajuan'));
+            redirect(site_url('welcome'));
         }
     }
 
@@ -306,7 +305,7 @@ class Tbl_pengajuan extends CI_Controller
             $this->Tbl_pengajuan_model->insert_update($data_update);
             $this->Tbl_pengajuan_model->update($this->input->post('id_pengajuan', TRUE), $data);
             $this->session->set_flashdata('message', 'Update Record Success !');
-            redirect(site_url('tbl_pengajuan'));
+            redirect(site_url('welcome'));
     }
 
     public function update_action()
@@ -328,7 +327,7 @@ class Tbl_pengajuan extends CI_Controller
 
             $this->Tbl_pengajuan_model->update($this->input->post('id_pengajuan', TRUE), $data);
             $this->session->set_flashdata('message', 'Update Record Success !');
-            redirect(site_url('tbl_pengajuan'));
+            redirect(site_url('welcome'));
         }
     }
 
@@ -344,7 +343,7 @@ class Tbl_pengajuan extends CI_Controller
             redirect(site_url('tbl_pengajuan'));
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
-            redirect(site_url('tbl_pengajuan'));
+            redirect(site_url('welcome'));
         }
     }
 
@@ -371,6 +370,33 @@ class Tbl_pengajuan extends CI_Controller
         );
 
         $this->load->view('tbl_pengajuan/tbl_pengajuan_doc', $data);
+    }
+
+    public function filter()
+    { 
+        $status1 = $this->input->get('status1');
+
+        $data = array(
+            'start'          => 0,
+            'status1'        => $status1,
+            'data_status1'   => $this->Tbl_pengajuan_model->get_all_by_status($status1),
+            'data_status2'   => $this->Tbl_pengajuan_model->get_all_by_status_between($status1),
+        );
+
+        $this->template->load('template', 'tbl_pengajuan/tbl_pengajuan_filter', $data);
+    }
+
+    public function filter_2()
+    { 
+        $status1 = $this->input->get('status1');
+
+        $data = array(
+            'start'          => 0,
+            'status1'        => $status1,
+            'tbl_pengajuan_data'   => $this->Tbl_pengajuan_model->get_all_by_status_2($status1),
+        );
+
+        $this->template->load('template', 'tbl_pengajuan/tbl_pengajuan_list', $data);
     }
 
 }
