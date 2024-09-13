@@ -375,12 +375,16 @@ class Tbl_pengajuan extends CI_Controller
     public function filter()
     { 
         $status1 = $this->input->get('status1');
+        $status2 = $this->input->get('status2');
 
         $data = array(
             'start'          => 0,
             'status1'        => $status1,
             'data_status1'   => $this->Tbl_pengajuan_model->get_all_by_status($status1),
-            'data_status2'   => $this->Tbl_pengajuan_model->get_all_by_status_between($status1),
+            'data_status2'   => $this->Tbl_pengajuan_model->get_all_by_status_between($status2),
+            'data_revisi'    => $this->Tbl_pengajuan_model->get_all_by_status_revisi(),
+            'data_ditolak'   => $this->Tbl_pengajuan_model->get_all_by_status_ditolak(),
+            'tbl_pengajuan_data' => $this->Tbl_pengajuan_model->get_all_laporan(),
         );
 
         $this->template->load('template', 'tbl_pengajuan/tbl_pengajuan_filter', $data);

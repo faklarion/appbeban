@@ -88,10 +88,33 @@ class Tbl_pengajuan_model extends CI_Model
 
         // Kondisi: (tanggal_acc adalah hari ini DAN status adalah 'acc') OR (tanggal_acc adalah besok DAN status bukan 'acc')
         $this->db->where('tanggal_acc', $today);
-        $this->db->where("status > $status1");
+        $this->db->where("status", $status1);
         
         return $this->db->get($this->table)->result();
     }
+
+    function get_all_by_status_revisi()
+    {
+        $this->db->group_start();
+        $this->db->where("status", 3);
+        $this->db->or_where("status", 6);
+        $this->db->or_where("status", 9);
+        $this->db->group_end();
+        
+        return $this->db->get($this->table)->result();
+    }
+
+    function get_all_by_status_ditolak()
+    {
+        $this->db->group_start();
+        $this->db->where("status", 2);
+        $this->db->or_where("status", 5);
+        $this->db->or_where("status", 8);
+        $this->db->group_end();
+        
+        return $this->db->get($this->table)->result();
+    }
+    
 
     // get data by id
     function get_by_id($id)

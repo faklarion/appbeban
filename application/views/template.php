@@ -5,28 +5,32 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>ZED Group</title>
-    <link rel="shortcut icon" href="<?= base_url('assets/img/logozed.png') ?>" type="image/x-icon">
+    <link rel="icon" href="<?php echo base_url('assets/img/logozed.png') ?>" type="image/x-icon">
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <!-- Bootstrap 3.3.7 -->
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/jquery-ui/themes/base/minified/jquery-ui.min.css"
         type="text/css" />
     <link rel="stylesheet"
         href="<?php echo base_url() ?>assets/adminlte/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Font Awesome -->
     <link rel="stylesheet"
         href="<?php echo base_url() ?>assets/adminlte/bower_components/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
     <link rel="stylesheet"
         href="<?php echo base_url() ?>assets/adminlte/bower_components/select2/dist/css/select2.min.css">
     <link rel="stylesheet"
         href="<?php echo base_url() ?>assets/adminlte/bower_components/Ionicons/css/ionicons.min.css">
+    <!-- DataTables -->
     <link rel="stylesheet"
         href="<?php echo base_url() ?>assets/adminlte/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+    <!-- Theme style -->
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/adminlte/dist/css/AdminLTE.min.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+             folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/adminlte/dist/css/skins/_all-skins.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.5/css/responsive.bootstrap4.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/datetime/1.5.3/css/dataTables.dateTime.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
+    <!-- FooTable CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.20.2/dist/bootstrap-table.min.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -321,20 +325,31 @@
                  immediately after the control sidebar -->
         <div class="control-sidebar-bg"></div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.5/js/dataTables.responsive.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.5/js/responsive.bootstrap4.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!-- ./wrapper -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script type="text/javascript" src="<?php echo base_url() ?>assets/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+    <!-- jQuery 3
+        <script src="<?php echo base_url() ?>assets/adminlte/bower_components/jquery/dist/jquery.min.js"></script>
+         -->
+    <!-- Bootstrap 3.3.7 -->
     <script src="<?php echo base_url() ?>assets/adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script
-        src="<?php echo base_url() ?>assets/adminlte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
+
+    <!-- DataTables Responsive JS -->
+    <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+    <link href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap4.min.css" rel="stylesheet">
+    <!-- SlimScroll -->
     <script
         src="<?php echo base_url() ?>assets/adminlte/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
     <script src="<?php echo base_url() ?>assets/adminlte/bower_components/fastclick/lib/fastclick.js"></script>
+    <!-- AdminLTE App -->
     <script src="<?php echo base_url() ?>assets/adminlte/dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
     <script src="<?php echo base_url() ?>assets/adminlte/dist/js/demo.js"></script>
+    <!-- Select2 -->
     <script src="<?php echo base_url() ?>assets/adminlte/bower_components/select2/dist/js/select2.full.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/id.min.js"></script>
@@ -344,82 +359,88 @@
     <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.colVis.min.js"></script>
+    <!-- FooTable JS -->
+    <script src="https://unpkg.com/bootstrap-table@1.20.2/dist/bootstrap-table.min.js"></script>
+
 
     <script>
-        $(document).ready(function () {
-            $('#example').DataTable({
-                responsive: true
-            });
+        $('#example').DataTable({
+            responsive: true
         });
-    </script>
-    <script>
-        $(document).ready(function() {
-            $('#tableBelumAcc').DataTable();
-            $('#tableSudahAcc').DataTable();
-        });
-    </script>
-    <script>
-        $(document).ready(function () {
-            $('#tabeldashboard').DataTable({
-                responsive: true
-            });
-        });
-    </script>
-    <script>
-        $(document).ready(function () {
-            // Inisialisasi DataTable
-            var table = $('#tabelLaporan').DataTable({
-                orderCellsTop: true,
-                fixedHeader: true,
-                responsive: true,
-                columnDefs: [
-                    {
-                        targets: 3, // Index kolom tanggal
-                        render: function (data, type, row) {
-                            return moment(data).format('DD MMMM YYYY');
-                        }
+
+        // Initialize DataTable for #tabelLaporan with date filtering and buttons
+        var table = $('#tabelLaporan').DataTable({
+            orderCellsTop: true,
+            fixedHeader: true,
+            responsive: true,
+            columnDefs: [
+                {
+                    targets: 3, // Index kolom tanggal
+                    render: function (data, type, row) {
+                        return moment(data).format('DD MMMM YYYY');
                     }
-                ],
-                dom: 'Bfrtip', // Menambahkan area Buttons
-                buttons: [
-                    'copy', // Menyalin ke clipboard
-                    'excel', // Ekspor ke Excel
-                    'pdf', // Ekspor ke PDF
-                    'print' // Mencetak
-                ]
-            });
-
-            // Filter rentang tanggal
-            $.fn.dataTable.ext.search.push(
-                function (settings, data, dataIndex) {
-                    var min = $('#min').datepicker("getDate");
-                    var max = $('#max').datepicker("getDate");
-                    var date = moment(data[3], 'DD MMMM YYYY').toDate(); // gunakan data untuk kolom tanggal
-
-                    if (
-                        (min === null && max === null) ||
-                        (min === null && date <= max) ||
-                        (min <= date && max === null) ||
-                        (min <= date && date <= max)
-                    ) {
-                        return true;
-                    }
-                    return false;
                 }
-            );
-
-            // Inisialisasi datepickers
-            $("#min, #max").datepicker({
-                onSelect: function () {
-                    table.draw();
-                },
-                changeMonth: true,
-                changeYear: true,
-                dateFormat: 'dd-mm-yy'
-            });
+            ],
+            dom: 'Bfrtip', // Buttons area
+            buttons: [
+                'copy', 'excel', 'pdf', 'print'
+            ]
         });
 
+        // Date range filter
+        $.fn.dataTable.ext.search.push(
+            function (settings, data, dataIndex) {
+                var min = $('#min').datepicker("getDate");
+                var max = $('#max').datepicker("getDate");
+                var date = moment(data[3], 'DD MMMM YYYY').toDate(); // Column index for date
+
+                if (
+                    (min === null && max === null) ||
+                    (min === null && date <= max) ||
+                    (min <= date && max === null) ||
+                    (min <= date && date <= max)
+                ) {
+                    return true;
+                }
+                return false;
+            }
+        );
+
+        // Initialize datepickers
+        $("#min, #max").datepicker({
+            onSelect: function () {
+                table.draw();
+            },
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'dd-mm-yy'
+        });
     </script>
+    <script>
+        $(document).ready(function () {
+            $('#tableTolak').bootstrapTable({
+                search: true,
+                pagination: true,
+                sortable: true
+            });
+            $('#tableRevisi').bootstrapTable({
+                search: true,
+                pagination: true,
+                sortable: true
+            });
+            $('#tableSudahAcc').bootstrapTable({
+                search: true,
+                pagination: true,
+                sortable: true
+            });
+            $('#tableBelumAcc').bootstrapTable({
+                search: true,
+                pagination: true,
+                sortable: true
+            });
+        });
+    </script>
+
 </body>
 
 </html>

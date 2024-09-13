@@ -32,6 +32,7 @@
                         <div style="display: flex; justify-content: center; align-items: center;">
                             <form action="<?php echo site_url('tbl_pengajuan/filter') ?>" method="get">
                                 <input type="hidden" name="status1" value="1">
+                                <input type="hidden" name="status2" value="4">
                                 <button type="submit" class="small-box-footer" style="border: none; background: none;">
                                     More info <i class="fa fa-arrow-circle-right"></i>
                                 </button>
@@ -134,6 +135,7 @@
                         <div style="display: flex; justify-content: center; align-items: center;">
                             <form action="<?php echo site_url('tbl_pengajuan/filter') ?>" method="get">
                                 <input type="hidden" name="status1" value="1">
+                                <input type="hidden" name="status2" value="4">
                                 <button type="submit" class="small-box-footer" style="border: none; background: none;">
                                     More info <i class="fa fa-arrow-circle-right"></i>
                                 </button>
@@ -187,6 +189,7 @@
                         <div style="display: flex; justify-content: center; align-items: center;">
                             <form action="<?php echo site_url('tbl_pengajuan/filter') ?>" method="get">
                                 <input type="hidden" name="status1" value="4">
+                                <input type="hidden" name="status2" value="7">
                                 <button type="submit" class="small-box-footer" style="border: none; background: none;">
                                     More info <i class="fa fa-arrow-circle-right"></i>
                                 </button>
@@ -240,6 +243,7 @@
                         <div style="display: flex; justify-content: center; align-items: center;">
                             <form action="<?php echo site_url('tbl_pengajuan/filter') ?>" method="get">
                                 <input type="hidden" name="status1" value="7">
+                                <input type="hidden" name="status2" value="10">
                                 <button type="submit" class="small-box-footer" style="border: none; background: none;">
                                     More info <i class="fa fa-arrow-circle-right"></i>
                                 </button>

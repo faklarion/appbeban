@@ -49,7 +49,7 @@
                                     <td><?php echo ++$start ?></td>
                                     <td><?php echo $tbl_pengajuan->perihal ?></td>
                                     <td><?php echo getUserName($tbl_pengajuan->status) ?></td>
-                                    <td><?php echo ($tbl_pengajuan->tanggal_pengajuan) ?></td>
+                                    <td><?php echo tgl_indo($tbl_pengajuan->tanggal_pengajuan) ?></td>
                                     <td><?php echo $tbl_pengajuan->keterangan ?></td>
                                     <td><?php echo anchor(base_url('assets/berkas/'.$tbl_pengajuan->berkas), '<i class="fa fa-eye" aria-hidden="true"> Lihat File</i>', 'class="btn btn-primary btn-sm" target="_blank"'); ?></td>
                                     <td><?php echo rename_status($tbl_pengajuan->status) ?></td>
