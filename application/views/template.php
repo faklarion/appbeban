@@ -367,6 +367,9 @@
         $('#example').DataTable({
             responsive: true
         });
+        $('#tabeldashboard').DataTable({
+            responsive: true
+        });
 
         // Initialize DataTable for #tabelLaporan with date filtering and buttons
         var table = $('#tabelLaporan').DataTable({
