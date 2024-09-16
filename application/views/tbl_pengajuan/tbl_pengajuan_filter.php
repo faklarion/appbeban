@@ -113,6 +113,7 @@
                             </tbody>
                         </table>
 
+                        <?php if($this->session->userdata('id_user_level') == 1) { ?>
                         <h4 class="text-center">Data Yang Harus di-Revisi</h4>
                         <table class="table table-bordered table-responsive" id="tableRevisi" data-toggle="table"
                             data-search="true" data-pagination="true" data-sortable="true">
@@ -195,6 +196,7 @@
                                 ?>
                             </tbody>
                         </table>
+                        <?php } ?>
 
                     </div>
                 </div>
