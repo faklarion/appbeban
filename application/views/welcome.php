@@ -38,7 +38,7 @@
                                 <input type="hidden" name="status2" value="4">
                                 <button type="submit" class="small-box-footer"
                                     style="border: none; background: rgba(0, 0, 0, 0); width: 100%; height: 100%; text-align: center; color: #fff;">
-                                    More info <i class="fa fa-arrow-circle-right"></i>
+                                    
                                 </button>
                             </form>
                         </div>
@@ -63,7 +63,7 @@
                                 <input type="hidden" name="status1" value="4">
                                 <button type="submit" class="small-box-footer"
                                     style="border: none; background: rgba(0, 0, 0, 0); width: 100%; height: 100%; text-align: center; color: #fff;">
-                                    More info <i class="fa fa-arrow-circle-right"></i>
+                                    
                                 </button>
                             </form>
                         </div>
@@ -88,7 +88,7 @@
                                 <input type="hidden" name="status1" value="7">
                                 <button type="submit" class="small-box-footer"
                                     style="border: none; background: rgba(0, 0, 0, 0); width: 100%; height: 100%; text-align: center; color: #fff;">
-                                    More info <i class="fa fa-arrow-circle-right"></i>
+                                    
                                 </button>
                             </form>
                         </div>
@@ -113,7 +113,7 @@
                                 <input type="hidden" name="status1" value="10">
                                 <button type="submit" class="small-box-footer"
                                     style="border: none; background: rgba(0, 0, 0, 0); width: 100%; height: 100%; text-align: center; color: #fff;">
-                                    More info <i class="fa fa-arrow-circle-right"></i>
+                                    
                                 </button>
                             </form>
                         </div>
@@ -148,7 +148,7 @@
                                 <input type="hidden" name="status2" value="4">
                                 <button type="submit" class="small-box-footer"
                                     style="border: none; background: rgba(0, 0, 0, 0); width: 100%; height: 100%; text-align: center; color: #fff;">
-                                    More info <i class="fa fa-arrow-circle-right"></i>
+                                    
                                 </button>
                             </form>
                         </div>
@@ -173,7 +173,7 @@
                                 <input type="hidden" name="status1" value="4">
                                 <button type="submit" class="small-box-footer"
                                     style="border: none; background: rgba(0, 0, 0, 0); width: 100%; height: 100%; text-align: center; color: #fff;">
-                                    More info <i class="fa fa-arrow-circle-right"></i>
+                                    
                                 </button>
                             </form>
                         </div>
@@ -204,7 +204,7 @@
                                 <input type="hidden" name="status2" value="7">
                                 <button type="submit" class="small-box-footer"
                                     style="border: none; background: rgba(0, 0, 0, 0); width: 100%; height: 100%; text-align: center; color: #fff;">
-                                    More info <i class="fa fa-arrow-circle-right"></i>
+                                    
                                 </button>
                             </form>
                         </div>
@@ -229,7 +229,7 @@
                                 <input type="hidden" name="status1" value="7">
                                 <button type="submit" class="small-box-footer"
                                     style="border: none; background: rgba(0, 0, 0, 0); width: 100%; height: 100%; text-align: center; color: #fff;">
-                                    More info <i class="fa fa-arrow-circle-right"></i>
+                                    
                                 </button>
                             </form>
                         </div>
@@ -260,7 +260,7 @@
                                 <input type="hidden" name="status2" value="10">
                                 <button type="submit" class="small-box-footer"
                                     style="border: none; background: rgba(0, 0, 0, 0); width: 100%; height: 100%; text-align: center; color: #fff;">
-                                    More info <i class="fa fa-arrow-circle-right"></i>
+                                    
                                 </button>
                             </form>
                         </div>
@@ -285,7 +285,7 @@
                                 <input type="hidden" name="status1" value="10">
                                 <button type="submit" class="small-box-footer"
                                     style="border: none; background: rgba(0, 0, 0, 0); width: 100%; height: 100%; text-align: center; color: #fff;">
-                                    More info <i class="fa fa-arrow-circle-right"></i>
+                                    
                                 </button>
                                 </form>
                             </div>
