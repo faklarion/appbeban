@@ -312,10 +312,11 @@
                 <tr>
                     <th>No</th>
                     <th>Perihal</th>
+                    <th>Catatan</th>
                     <th>Status</th>
                     <th>Tanggal Update</th>
                     <th>User</th>
-                    <th>Catatan</th>
+                    
                 </tr>
             </thead>
             <tbody>
@@ -326,6 +327,7 @@
                     <tr>
                         <td><?php echo $no++ ?></td>
                         <td><?php echo $row->perihal ?></td>
+                        <td><?php echo $row->catatan ?></td>
                         <td><?php echo rename_status($row->status) ?></td>
                         <td>
                             <?php
@@ -348,7 +350,6 @@
                             }
                             ?>
                         </td>
-                        <td><?php echo $row->catatan ?></td>
                     </tr>
                 <?php endforeach ?>
             </tbody>

@@ -37,14 +37,14 @@
                             <thead>
                                 <tr>
                                     <th data-sortable="true">No</th>
+                                    <th data-sortable="true">Action</th>
                                     <th data-sortable="true">Perihal</th>
+                                    <th data-sortable="true">Keterangan</th>
+                                    <th data-sortable="true">Catatan</th>
                                     <th data-sortable="true">User</th>
                                     <th data-sortable="true">Tanggal Pengajuan</th>
-                                    <th data-sortable="true">Keterangan</th>
                                     <th data-sortable="true">File</th>
                                     <th data-sortable="true">Status</th>
-                                    <th data-sortable="true">Catatan</th>
-                                    <th data-sortable="true">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -54,17 +54,17 @@
                                     ?>
                                     <tr>
                                         <td><?php echo ++$start ?></td>
-                                        <td><?php echo $tbl_pengajuan->perihal ?></td>
-                                        <td><?php echo get_user_role($tbl_pengajuan->status) ?></td>
-                                        <td><?php echo tgl_indo($tbl_pengajuan->tanggal_pengajuan) ?></td>
-                                        <td><?php echo $tbl_pengajuan->keterangan ?></td>
-                                        <td><?php echo anchor(base_url('assets/berkas/' . $tbl_pengajuan->berkas), '<i class="fa fa-eye" aria-hidden="true"> Lihat File</i>', 'class="btn btn-primary btn-sm" target="_blank"'); ?>
-                                        </td>
-                                        <td><?php echo rename_status($tbl_pengajuan->status) ?></td>
-                                        <td><?php echo $tbl_pengajuan->catatan ?></td>
                                         <td style="text-align:center">
                                             <?php echo get_action_buttons($tbl_pengajuan, $this->session->userdata('id_user_level')); ?>
                                         </td>
+                                        <td><?php echo $tbl_pengajuan->perihal ?></td>
+                                        <td><?php echo $tbl_pengajuan->keterangan ?></td>
+                                        <td><?php echo $tbl_pengajuan->catatan ?></td>
+                                        <td><?php echo get_user_role($tbl_pengajuan->status) ?></td>
+                                        <td><?php echo tgl_indo($tbl_pengajuan->tanggal_pengajuan) ?></td>
+                                        <td><?php echo anchor(base_url('assets/berkas/' . $tbl_pengajuan->berkas), '<i class="fa fa-eye" aria-hidden="true"> Lihat File</i>', 'class="btn btn-primary btn-sm" target="_blank"'); ?>
+                                        </td>
+                                        <td><?php echo rename_status($tbl_pengajuan->status) ?></td>  
                                     </tr>
                                     <?php
                                 }
@@ -78,14 +78,14 @@
                             <thead>
                                 <tr>
                                     <th data-sortable="true">No</th>
+                                    <th data-sortable="true">Action</th>
                                     <th data-sortable="true">Perihal</th>
+                                    <th data-sortable="true">Keterangan</th>
+                                    <th data-sortable="true">Catatan</th>
                                     <th data-sortable="true">User</th>
                                     <th data-sortable="true">Tanggal Pengajuan</th>
-                                    <th data-sortable="true">Keterangan</th>
                                     <th data-sortable="true">File</th>
                                     <th data-sortable="true">Status</th>
-                                    <th data-sortable="true">Catatan</th>
-                                    <th data-sortable="true">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -95,17 +95,17 @@
                                     ?>
                                     <tr>
                                         <td><?php echo ++$start ?></td>
-                                        <td><?php echo $tbl_pengajuan->perihal ?></td>
-                                        <td><?php echo get_user_role($tbl_pengajuan->status) ?></td>
-                                        <td><?php echo tgl_indo($tbl_pengajuan->tanggal_pengajuan) ?></td>
-                                        <td><?php echo $tbl_pengajuan->keterangan ?></td>
-                                        <td><?php echo anchor(base_url('assets/berkas/' . $tbl_pengajuan->berkas), '<i class="fa fa-eye" aria-hidden="true"> Lihat File</i>', 'class="btn btn-primary btn-sm" target="_blank"'); ?>
-                                        </td>
-                                        <td><?php echo rename_status($tbl_pengajuan->status) ?></td>
-                                        <td><?php echo $tbl_pengajuan->catatan ?></td>
                                         <td style="text-align:center">
                                             <?php echo get_action_buttons($tbl_pengajuan, $this->session->userdata('id_user_level')); ?>
                                         </td>
+                                        <td><?php echo $tbl_pengajuan->perihal ?></td>
+                                        <td><?php echo $tbl_pengajuan->keterangan ?></td>
+                                        <td><?php echo $tbl_pengajuan->catatan ?></td>
+                                        <td><?php echo get_user_role($tbl_pengajuan->status) ?></td>
+                                        <td><?php echo tgl_indo($tbl_pengajuan->tanggal_pengajuan) ?></td>
+                                        <td><?php echo anchor(base_url('assets/berkas/' . $tbl_pengajuan->berkas), '<i class="fa fa-eye" aria-hidden="true"> Lihat File</i>', 'class="btn btn-primary btn-sm" target="_blank"'); ?>
+                                        </td>
+                                        <td><?php echo rename_status($tbl_pengajuan->status) ?></td>  
                                     </tr>
                                     <?php
                                 }
@@ -120,14 +120,14 @@
                             <thead>
                                 <tr>
                                     <th data-sortable="true">No</th>
+                                    <th data-sortable="true">Action</th>
                                     <th data-sortable="true">Perihal</th>
+                                    <th data-sortable="true">Keterangan</th>
+                                    <th data-sortable="true">Catatan</th>
                                     <th data-sortable="true">User</th>
                                     <th data-sortable="true">Tanggal Pengajuan</th>
-                                    <th data-sortable="true">Keterangan</th>
                                     <th data-sortable="true">File</th>
                                     <th data-sortable="true">Status</th>
-                                    <th data-sortable="true">Catatan</th>
-                                    <th data-sortable="true">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -137,20 +137,19 @@
                                     ?>
                                     <tr>
                                         <td><?php echo ++$start ?></td>
-                                        <td><?php echo $tbl_pengajuan->perihal ?></td>
-                                        <td><?php echo get_user_role($tbl_pengajuan->status) ?></td>
-                                        <td><?php echo tgl_indo($tbl_pengajuan->tanggal_pengajuan) ?></td>
-                                        <td><?php echo $tbl_pengajuan->keterangan ?></td>
-                                        <td><?php echo anchor(base_url('assets/berkas/' . $tbl_pengajuan->berkas), '<i class="fa fa-eye" aria-hidden="true"> Lihat File</i>', 'class="btn btn-primary btn-sm" target="_blank"'); ?>
-                                        </td>
-                                        <td><?php echo rename_status($tbl_pengajuan->status) ?></td>
-                                        <td><?php echo $tbl_pengajuan->catatan ?></td>
                                         <td style="text-align:center">
                                             <?php echo get_action_buttons($tbl_pengajuan, $this->session->userdata('id_user_level')); ?>
                                         </td>
+                                        <td><?php echo $tbl_pengajuan->perihal ?></td>
+                                        <td><?php echo $tbl_pengajuan->keterangan ?></td>
+                                        <td><?php echo $tbl_pengajuan->catatan ?></td>
+                                        <td><?php echo get_user_role($tbl_pengajuan->status) ?></td>
+                                        <td><?php echo tgl_indo($tbl_pengajuan->tanggal_pengajuan) ?></td>
+                                        <td><?php echo anchor(base_url('assets/berkas/' . $tbl_pengajuan->berkas), '<i class="fa fa-eye" aria-hidden="true"> Lihat File</i>', 'class="btn btn-primary btn-sm" target="_blank"'); ?>
+                                        </td>
+                                        <td><?php echo rename_status($tbl_pengajuan->status) ?></td>  
                                     </tr>
                                     <?php
-
                                 }
                                 ?>
                             </tbody>
@@ -162,14 +161,14 @@
                             <thead>
                                 <tr>
                                     <th data-sortable="true">No</th>
+                                    <th data-sortable="true">Action</th>
                                     <th data-sortable="true">Perihal</th>
+                                    <th data-sortable="true">Keterangan</th>
+                                    <th data-sortable="true">Catatan</th>
                                     <th data-sortable="true">User</th>
                                     <th data-sortable="true">Tanggal Pengajuan</th>
-                                    <th data-sortable="true">Keterangan</th>
                                     <th data-sortable="true">File</th>
                                     <th data-sortable="true">Status</th>
-                                    <th data-sortable="true">Catatan</th>
-                                    <th data-sortable="true">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -179,17 +178,17 @@
                                     ?>
                                     <tr>
                                         <td><?php echo ++$start ?></td>
-                                        <td><?php echo $tbl_pengajuan->perihal ?></td>
-                                        <td><?php echo get_user_role($tbl_pengajuan->status) ?></td>
-                                        <td><?php echo tgl_indo($tbl_pengajuan->tanggal_pengajuan) ?></td>
-                                        <td><?php echo $tbl_pengajuan->keterangan ?></td>
-                                        <td><?php echo anchor(base_url('assets/berkas/' . $tbl_pengajuan->berkas), '<i class="fa fa-eye" aria-hidden="true"> Lihat File</i>', 'class="btn btn-primary btn-sm" target="_blank"'); ?>
-                                        </td>
-                                        <td><?php echo rename_status($tbl_pengajuan->status) ?></td>
-                                        <td><?php echo $tbl_pengajuan->catatan ?></td>
                                         <td style="text-align:center">
                                             <?php echo get_action_buttons($tbl_pengajuan, $this->session->userdata('id_user_level')); ?>
                                         </td>
+                                        <td><?php echo $tbl_pengajuan->perihal ?></td>
+                                        <td><?php echo $tbl_pengajuan->keterangan ?></td>
+                                        <td><?php echo $tbl_pengajuan->catatan ?></td>
+                                        <td><?php echo get_user_role($tbl_pengajuan->status) ?></td>
+                                        <td><?php echo tgl_indo($tbl_pengajuan->tanggal_pengajuan) ?></td>
+                                        <td><?php echo anchor(base_url('assets/berkas/' . $tbl_pengajuan->berkas), '<i class="fa fa-eye" aria-hidden="true"> Lihat File</i>', 'class="btn btn-primary btn-sm" target="_blank"'); ?>
+                                        </td>
+                                        <td><?php echo rename_status($tbl_pengajuan->status) ?></td>  
                                     </tr>
                                     <?php
                                 }
