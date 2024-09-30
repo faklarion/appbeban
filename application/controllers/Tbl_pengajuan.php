@@ -228,6 +228,17 @@ class Tbl_pengajuan extends CI_Controller
 
     public function acc_gm_action()
     {
+
+            $rowHp      = $this->Tbl_pengajuan_model->get_nomer();
+            $noHpCeo    = $rowHp->no_ceo;
+            $noHpAdmin  = $rowHp->no_admin;
+
+            $tanggalPengajuan   = $this->input->post('tanggal_pengajuan', TRUE);
+            $perihal            = $this->input->post('perihal', TRUE);
+            $pesanAcc           = 'Halo CEO, Ada pengajuan yang telah di ACC GM Smartphone pada tanggal '.tgl_indo($tanggalPengajuan).' dengan perihal '.$perihal.', silakan cek website pengajuan beban, terimakasih.';
+            $pesanRevisi        = 'Halo Admin, Ada pengajuan yang harus direvisi pada tanggal '.tgl_indo($tanggalPengajuan).' dengan perihal '.$perihal.', silakan cek website pengajuan beban dan revisi, terimakasih.';
+            $pesanTolak         = 'Halo Admin, Ada pengajuan yang ditolak pada tanggal '.tgl_indo($tanggalPengajuan).' dengan perihal '.$perihal.', silakan cek website pengajuan beban, terimakasih.';
+
             date_default_timezone_set('Asia/Makassar'); # add your city to set local time zone
             $now     = date('Y-m-d H:i:s');
             $nowHari = date('Y-m-d');
@@ -245,6 +256,14 @@ class Tbl_pengajuan extends CI_Controller
                 'status' => $this->input->post('status', TRUE),
                 'catatan' => $this->input->post('catatan', TRUE),
             );
+
+            if($this->input->post('status', TRUE) == 2) {
+                $this->kirim_wa($noHpAdmin, $pesanTolak);
+            } elseif($this->input->post('status', TRUE) == 3) {
+                $this->kirim_wa($noHpAdmin, $pesanRevisi);
+            } elseif($this->input->post('status', TRUE) == 4) {
+                $this->kirim_wa($noHpCeo, $pesanAcc);
+            }
             
             $this->Tbl_pengajuan_model->insert_update($data_update);
             $this->Tbl_pengajuan_model->update($this->input->post('id_pengajuan', TRUE), $data);
@@ -277,6 +296,16 @@ class Tbl_pengajuan extends CI_Controller
 
     public function acc_ceo_action()
     {
+            $rowHp          = $this->Tbl_pengajuan_model->get_nomer();
+            $noHpKeuangan   = $rowHp->no_keuangan;
+            $noHpAdmin      = $rowHp->no_admin;
+
+            $tanggalPengajuan   = $this->input->post('tanggal_pengajuan', TRUE);
+            $perihal            = $this->input->post('perihal', TRUE);
+            $pesanAcc           = 'Halo Manager Keuangan, Ada pengajuan yang telah di ACC CEO pada tanggal '.tgl_indo($tanggalPengajuan).' dengan perihal '.$perihal.', silakan cek website pengajuan beban, terimakasih.';
+            $pesanRevisi        = 'Halo Admin, Ada pengajuan yang harus direvisi pada tanggal '.tgl_indo($tanggalPengajuan).' dengan perihal '.$perihal.', silakan cek website pengajuan beban dan revisi, terimakasih.';
+            $pesanTolak         = 'Halo Admin, Ada pengajuan yang ditolak pada tanggal '.tgl_indo($tanggalPengajuan).' dengan perihal '.$perihal.', silakan cek website pengajuan beban, terimakasih.';
+
             date_default_timezone_set('Asia/Makassar'); # add your city to set local time zone
             $now     = date('Y-m-d H:i:s');
             $nowHari = date('Y-m-d');
@@ -293,6 +322,14 @@ class Tbl_pengajuan extends CI_Controller
                 'status' => $this->input->post('status', TRUE),
                 'catatan' => $this->input->post('catatan', TRUE),
             );
+
+            if($this->input->post('status', TRUE) == 5) {
+                $this->kirim_wa($noHpAdmin, $pesanTolak);
+            } elseif($this->input->post('status', TRUE) == 6) {
+                $this->kirim_wa($noHpAdmin, $pesanRevisi);
+            } elseif($this->input->post('status', TRUE) == 7) {
+                $this->kirim_wa($noHpKeuangan, $pesanAcc);
+            }
             
             $this->Tbl_pengajuan_model->insert_update($data_update);
             $this->Tbl_pengajuan_model->update($this->input->post('id_pengajuan', TRUE), $data);
@@ -325,6 +362,16 @@ class Tbl_pengajuan extends CI_Controller
 
     public function acc_keuangan_action()
     {
+
+            $rowHp          = $this->Tbl_pengajuan_model->get_nomer();
+            $noHpAdmin      = $rowHp->no_admin;
+
+            $tanggalPengajuan   = $this->input->post('tanggal_pengajuan', TRUE);
+            $perihal            = $this->input->post('perihal', TRUE);
+            $pesanAcc           = 'Halo Admin, Ada pengajuan yang telah di Manager Keuangan pada tanggal '.tgl_indo($tanggalPengajuan).' dengan perihal '.$perihal.', silakan cek website pengajuan beban dan erzap, terimakasih.';
+            $pesanRevisi        = 'Halo Admin, Ada pengajuan yang harus direvisi pada tanggal '.tgl_indo($tanggalPengajuan).' dengan perihal '.$perihal.', silakan cek website pengajuan beban dan revisi, terimakasih.';
+            $pesanTolak         = 'Halo Admin, Ada pengajuan yang ditolak pada tanggal '.tgl_indo($tanggalPengajuan).' dengan perihal '.$perihal.', silakan cek website pengajuan beban, terimakasih.';
+
             date_default_timezone_set('Asia/Makassar'); # add your city to set local time zone
             $now     = date('Y-m-d H:i:s');
             $nowHari = date('Y-m-d');
@@ -341,6 +388,14 @@ class Tbl_pengajuan extends CI_Controller
                 'status' => $this->input->post('status', TRUE),
                 'catatan' => $this->input->post('catatan', TRUE),
             );
+
+            if($this->input->post('status', TRUE) == 8) {
+                $this->kirim_wa($noHpAdmin, $pesanTolak);
+            } elseif($this->input->post('status', TRUE) == 9) {
+                $this->kirim_wa($noHpAdmin, $pesanRevisi);
+            } elseif($this->input->post('status', TRUE) == 10) {
+                $this->kirim_wa($noHpAdmin, $pesanAcc);
+            }
             
             $this->Tbl_pengajuan_model->insert_update($data_update);
             $this->Tbl_pengajuan_model->update($this->input->post('id_pengajuan', TRUE), $data);

@@ -10,6 +10,7 @@
 						<td width='200'>Perihal </td>
                         <td>
                             <?php echo $perihal ?>
+							<input type="hidden" name="perihal" value="<?php echo $perihal ?>">
                         </td>
 					</tr>
 
@@ -17,6 +18,7 @@
 						<td width='200'>Tanggal Pengajuan </td>
                         <td>
                             <?php echo tgl_indo($tanggal_pengajuan) ?>
+							<input type="hidden" name="tanggal_pengajuan" value="<?php echo $tanggal_pengajuan ?>">
                         </td>
 					</tr>
 
