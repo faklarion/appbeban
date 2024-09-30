@@ -123,6 +123,12 @@ class Tbl_pengajuan_model extends CI_Model
         return $this->db->get($this->table)->row();
     }
 
+    function get_nomer()
+    {
+        $this->db->select('*');
+        return $this->db->get('tbl_nohp')->row();
+    }
+
     // get total rows
     function total_rows($q = NULL)
     {

@@ -90,6 +90,35 @@ class Tbl_pengajuan extends CI_Controller
         $this->template->load('template', 'tbl_pengajuan/tbl_pengajuan_form', $data);
     }
 
+
+    public function kirim_wa($target, $pesan){
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+          CURLOPT_URL => 'https://api.fonnte.com/send',
+          CURLOPT_RETURNTRANSFER => true,
+          CURLOPT_ENCODING => '',
+          CURLOPT_MAXREDIRS => 10,
+          CURLOPT_TIMEOUT => 0,
+          CURLOPT_FOLLOWLOCATION => true,
+          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+          CURLOPT_CUSTOMREQUEST => 'POST',
+          CURLOPT_POSTFIELDS => array(
+        'target' => $target,
+        'message' => $pesan, 
+        'countryCode' => '62', //optional
+        ),
+          CURLOPT_HTTPHEADER => array(
+            'Authorization: R-WQbHaFWhQRxzDGb2LH' //change TOKEN to your actual token
+          ),
+        ));
+        
+        $response = curl_exec($curl);
+        
+        curl_close($curl);
+        echo $response;
+    }
+
     function upload_file(){
         $config['upload_path']          = './assets/berkas';
         $config['allowed_types']        = 'pdf|jpg|png|jpeg';
@@ -103,6 +132,14 @@ class Tbl_pengajuan extends CI_Controller
 
     public function create_action()
     {
+        $rowHp = $this->Tbl_pengajuan_model->get_nomer();
+
+        $noHpGM = $rowHp->no_gm;
+
+        $tanggalPengajuan = $this->input->post('tanggal_pengajuan', TRUE);
+        $perihal = $this->input->post('perihal', TRUE);
+        $pesan = 'Halo GM Smartphone, Ada Pengajuan baru pada tanggal '.tgl_indo($tanggalPengajuan).' dengan perihal '.$perihal.', silakan cek website pengajuan beban, terimakasih.';
+        
         $this->_rules();
         $berkas = $this->upload_file();
         date_default_timezone_set('Asia/Makassar'); # add your city to set local time zone
@@ -121,6 +158,7 @@ class Tbl_pengajuan extends CI_Controller
                 'catatan' => "Baru di Input",
             );
 
+            $this->kirim_wa($noHpGM, $pesan);
             $id_pengajuan = $this->Tbl_pengajuan_model->insert($data);
             date_default_timezone_set('Asia/Makassar'); # add your city to set local time zone
             $now = date('Y-m-d H:i:s');
@@ -334,11 +372,23 @@ class Tbl_pengajuan extends CI_Controller
     public function delete($id)
     {
         $row = $this->Tbl_pengajuan_model->get_by_id($id);
-
+    
         if ($row) {
+            // Dapatkan path berkas dari database
+            $file_path = FCPATH . 'assets/berkas/' . $row->berkas;
+    
+            // Cek apakah berkas ada, kemudian hapus
+            if (file_exists($file_path)) {
+                unlink($file_path);
+            }
+    
+            // Hapus data dari tbl_pengajuan
             $this->Tbl_pengajuan_model->delete($id);
+            
+            // Hapus data terkait di tbl_update
             $this->db->where('id_pengajuan', $id);
-            $this->db->delete('tbl_update'); 
+            $this->db->delete('tbl_update');
+    
             $this->session->set_flashdata('message', 'Delete Record Success');
             redirect(site_url('tbl_pengajuan'));
         } else {
@@ -346,6 +396,7 @@ class Tbl_pengajuan extends CI_Controller
             redirect(site_url('welcome'));
         }
     }
+    
 
     public function _rules()
     {
