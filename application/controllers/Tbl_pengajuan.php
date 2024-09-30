@@ -180,6 +180,7 @@ class Tbl_pengajuan extends CI_Controller
 
     public function update($id)
     {
+        
         $row = $this->Tbl_pengajuan_model->get_by_id($id);
 
         if ($row) {
@@ -203,6 +204,7 @@ class Tbl_pengajuan extends CI_Controller
 
     public function acc_gm($id)
     {
+        
         $row = $this->Tbl_pengajuan_model->get_by_id($id);
 
         if ($row) {
@@ -348,6 +350,14 @@ class Tbl_pengajuan extends CI_Controller
 
     public function update_action()
     {
+        $rowHp = $this->Tbl_pengajuan_model->get_nomer();
+
+        $noHpGM = $rowHp->no_gm;
+
+        $tanggalPengajuan = $this->input->post('tanggal_pengajuan', TRUE);
+        $perihal = $this->input->post('perihal', TRUE);
+        $pesan = 'Halo GM Smartphone, Ada update pengajuan yang pada tanggal '.tgl_indo($tanggalPengajuan).' dengan perihal '.$perihal.', silakan cek website pengajuan beban, terimakasih.';
+        
         $this->_rules();
         $berkas = $this->upload_file();
 
@@ -362,6 +372,8 @@ class Tbl_pengajuan extends CI_Controller
                 'status' => 1,
                 'catatan' => "Baru di Input",
             );
+            
+            $this->kirim_wa($noHpGM, $pesan);
 
             $this->Tbl_pengajuan_model->update($this->input->post('id_pengajuan', TRUE), $data);
             $this->session->set_flashdata('message', 'Update Record Success !');
