@@ -9,6 +9,7 @@ class Tbl_pengajuan extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Tbl_pengajuan_model');
+        $this->load->model('Tbl_nohp_model');
         $this->load->model('User_model');
         $this->load->library('form_validation');
     }
@@ -519,6 +520,17 @@ class Tbl_pengajuan extends CI_Controller
         );
 
         $this->template->load('template', 'tbl_pengajuan/tbl_pengajuan_list', $data);
+    }
+
+    public function no_hp()
+    { 
+
+        $data = array(
+            'start'          => 0,
+            'tbl_nohp_data'   => $this->Tbl_nohp_model->get_all(),
+        );
+
+        $this->template->load('template', 'tbl_nohp/tbl_nohp_list', $data);
     }
 
 }
