@@ -98,16 +98,16 @@ function datalist_dinamis($name,$table,$field,$value=null){
     
 function rename_status($statusCode) {
     $status = [
-        1 => '<button class="btn btn-sm btn-info">Input Admin</button>',
-        2 => '<button class="btn btn-sm btn-danger">Ditolak (GM Smartphone)</button>',
-        3 => '<button class="btn btn-sm btn-warning">Revisi (GM Smartphone)</button>',
-        4 => '<button class="btn btn-sm btn-success">Disetujui (GM Smartphone)</button>',
-        5 => '<button class="btn btn-sm btn-danger">Ditolak (CEO)</button>',
-        6 => '<button class="btn btn-sm btn-warning">Revisi (CEO)</button>',
-        7 => '<button class="btn btn-sm btn-success">Disetujui (CEO)</button>',
-        8 => '<button class="btn btn-sm btn-danger">Ditolak (Manager Keuangan)</button>',
-        9 => '<button class="btn btn-sm btn-warning">Revisi Manager Keuangan</button>',
-        10 => '<button class="btn btn-sm btn-success">Disetujui (Manager Keuangan)</button>',
+        1 => '<div class="text-box-info text-center">Input Admin</div>',
+        2 => '<div class="text-box-danger text-center">Ditolak (GM Smartphone)</div>',
+        3 => '<div class="text-box-warning text-center">Revisi (GM Smartphone)</div>',
+        4 => '<div class="text-box-success text-center">Disetujui (GM Smartphone)</div>',
+        5 => '<div class="text-box-danger text-center">Ditolak (CEO)</div>',
+        6 => '<div class="text-box-warning text-center">Revisi (CEO)</div>',
+        7 => '<div class="text-box-success text-center">Disetujui (CEO)</div>',
+        8 => '<div class="text-box-danger text-center">Ditolak (Manager Keuangan)</div>',
+        9 => '<div class="text-box-warning text-center">Revisi Manager Keuangan</div>',
+        10 => '<div class="text-box-success text-center">Disetujui (Manager Keuangan)</div>',
     ];
     
     // Contoh penggunaan:

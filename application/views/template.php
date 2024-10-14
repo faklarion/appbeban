@@ -42,6 +42,35 @@
     <!-- Google Font -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <style>
+    .text-box-warning {
+        background-color: orange; /* Warna kotak */
+        color: white; /* Warna teks */
+        padding: 10px; /* Ruang di dalam kotak */
+        border-radius: 5px; /* Sudut membulat (opsional) */
+    }
+
+    .text-box-success {
+        background-color: green; /* Warna kotak */
+        color: white; /* Warna teks */
+        padding: 10px; /* Ruang di dalam kotak */
+        border-radius: 5px; /* Sudut membulat (opsional) */
+    }
+
+    .text-box-info {
+        background-color: #3987c9; /* Warna kotak */
+        color: white; /* Warna teks */
+        padding: 10px; /* Ruang di dalam kotak */
+        border-radius: 5px; /* Sudut membulat (opsional) */
+    }
+
+    .text-box-danger {
+        background-color: red; /* Warna kotak */
+        color: white; /* Warna teks */
+        padding: 10px; /* Ruang di dalam kotak */
+        border-radius: 5px; /* Sudut membulat (opsional) */
+    }
+    </style>
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
