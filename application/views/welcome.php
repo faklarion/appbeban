@@ -53,7 +53,7 @@
                                 echo count($query);
                                 ?>
                             </h3>
-                            <p>Jumlah ACC GM Smartphone Hari Ini</p>
+                            <p>Jumlah Approval GM Smartphone Hari Ini</p>
                         </div>
                         <div class="icon">
                             <i class="fa fa-check"></i>
@@ -78,7 +78,7 @@
                                 echo count($query);
                                 ?>
                             </h3>
-                            <p>Jumlah ACC CEO Hari Ini</p>
+                            <p>Jumlah Approval CEO Hari Ini</p>
                         </div>
                         <div class="icon">
                             <i class="fa fa-check"></i>
@@ -103,7 +103,7 @@
                                 echo count($query);
                                 ?>
                             </h3>
-                            <p>Jumlah ACC Manager Keuangan Hari Ini</p>
+                            <p>Jumlah Approval Manager Keuangan Hari Ini</p>
                         </div>
                         <div class="icon">
                             <i class="fa fa-check"></i>
@@ -163,7 +163,7 @@
                                 echo count($query);
                                 ?>
                             </h3>
-                            <p>Jumlah ACC GM Smartphone Hari Ini</p>
+                            <p>Jumlah Approval GM Smartphone Hari Ini</p>
                         </div>
                         <div class="icon">
                             <i class="fa fa-check"></i>
@@ -193,7 +193,7 @@
                                 echo count($query);
                                 ?>
                             </h3>
-                            <p>Jumlah ACC GM Smartphone Hari Ini</p>
+                            <p>Jumlah Approval GM Smartphone Hari Ini</p>
                         </div>
                         <div class="icon">
                             <i class="fa fa-check"></i>
@@ -219,7 +219,7 @@
                                 echo count($query);
                                 ?>
                             </h3>
-                            <p>Jumlah ACC CEO Hari Ini</p>
+                            <p>Jumlah Approval CEO Hari Ini</p>
                         </div>
                         <div class="icon">
                             <i class="fa fa-check"></i>
@@ -249,7 +249,7 @@
                                 echo count($query);
                                 ?>
                             </h3>
-                            <p>Jumlah ACC CEO Hari Ini</p>
+                            <p>Jumlah Approval CEO Hari Ini</p>
                         </div>
                         <div class="icon">
                             <i class="fa fa-check"></i>
@@ -275,7 +275,7 @@
                                     echo count($query);
                                     ?>
                                 </h3>
-                                <p>Jumlah ACC Manager Keuangan Hari Ini</p>
+                                <p>Jumlah Approval Manager Keuangan Hari Ini</p>
                             </div>
                             <div class="icon">
                                 <i class="fa fa-check"></i>

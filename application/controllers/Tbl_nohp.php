@@ -8,7 +8,6 @@ class Tbl_nohp extends CI_Controller
     function __construct()
     {
         parent::__construct();
-        is_login();
         $this->load->model('Tbl_nohp_model');
         $this->load->library('form_validation');
     }
@@ -105,11 +104,11 @@ class Tbl_nohp extends CI_Controller
             $data = array(
                 'button' => 'Update',
                 'action' => site_url('tbl_nohp/update_action'),
-		'id_nohp' => set_value('id_nohp', $row->id_nohp),
-		'no_admin' => set_value('no_admin', $row->no_admin),
-		'no_ceo' => set_value('no_ceo', $row->no_ceo),
-		'no_gm' => set_value('no_gm', $row->no_gm),
-		'no_keuangan' => set_value('no_keuangan', $row->no_keuangan),
+                'id_nohp' => set_value('id_nohp', $row->id_nohp),
+                'no_admin' => set_value('no_admin', $row->no_admin),
+                'no_ceo' => set_value('no_ceo', $row->no_ceo),
+                'no_gm' => set_value('no_gm', $row->no_gm),
+                'no_keuangan' => set_value('no_keuangan', $row->no_keuangan),
 	    );
             $this->template->load('template','tbl_nohp/tbl_nohp_form', $data);
         } else {

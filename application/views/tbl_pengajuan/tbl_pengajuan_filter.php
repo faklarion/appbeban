@@ -257,14 +257,14 @@
                                     <input type="radio" name="status" value="3" id="status3">
                                     <label for="status3">Revisi</label><br>
                                     <input type="radio" name="status" value="4" id="status4">
-                                    <label for="status4">Acc</label>
+                                    <label for="status4">Disetujui</label>
                                 </td>
                             </tr>
 
                             <tr>
                                 <td width='200'>Catatan </td>
                                 <td>
-                                    <textarea class="form-control" name="catatan" id="catatan" required></textarea>
+                                    <textarea class="form-control" name="catatan" id="catatan"></textarea>
                                 </td>
                             </tr>
 
@@ -342,14 +342,14 @@
                                     <input type="radio" name="status" value="6" id="status3">
                                     <label for="status3">Revisi</label><br>
                                     <input type="radio" name="status" value="7" id="status4">
-                                    <label for="status4">Acc</label>
+                                    <label for="status4">Disetujui</label>
                                 </td>
                             </tr>
 
                             <tr>
                                 <td width='200'>Catatan </td>
                                 <td>
-                                    <textarea class="form-control" name="catatan" id="catatan" required></textarea>
+                                    <textarea class="form-control" name="catatan" id="catatan" ></textarea>
                                 </td>
                             </tr>
 
@@ -388,7 +388,7 @@
                 </div>
                 <!-- body modal -->
                 <div class="modal-body">
-                    <form action="<?php echo site_url('tbl_pengajuan/acc_ceo_action') ?>" method="post"
+                    <form action="<?php echo site_url('tbl_pengajuan/acc_keuangan_action') ?>" method="post"
                         enctype='multipart/form-data'>
                         <table class='table table-bordered'>
                             <tr>
@@ -422,19 +422,19 @@
                             <tr>
                                 <td width='200'>Approval </td>
                                 <td>
-                                    <input type="radio" name="status" value="8" id="status2" required>
-                                    <label for="status2">Ditolak</label><br>
-                                    <input type="radio" name="status" value="9" id="status3">
-                                    <label for="status3">Revisi</label><br>
-                                    <input type="radio" name="status" value="10" id="status4">
-                                    <label for="status4">Acc</label>
+                                    <input type="radio" name="status" value="8" id="status_tolak" required>
+                                    <label for="status_tolak">Ditolak</label><br>
+                                    <input type="radio" name="status" value="9" id="status_revisi">
+                                    <label for="status_revisi">Revisi</label><br>
+                                    <input type="radio" name="status" value="10" id="status_acc">
+                                    <label for="status_acc">Disetujui</label>
                                 </td>
                             </tr>
 
                             <tr>
                                 <td width='200'>Catatan </td>
                                 <td>
-                                    <textarea class="form-control" name="catatan" id="catatan" required></textarea>
+                                    <textarea class="form-control" name="catatan" id="catatan" ></textarea>
                                 </td>
                             </tr>
 

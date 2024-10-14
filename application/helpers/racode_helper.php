@@ -17,7 +17,7 @@ function cmb_dinamis($name,$table,$field,$pk,$selected=null,$order=null){
 
 function select2_dinamis($name,$table,$field,$placeholder){
     $ci = get_instance();
-    $select2 = '<select name="'.$name.'" class="form-control select2 select2-hidden-accessible" multiple="" 
+    $select2 = '<select name="'.$name.'" class="form-control select2 select2-hidden-Disetujuiessible" multiple="" 
                data-placeholder="'.$placeholder.'" style="width: 100%;" tabindex="-1" aria-hidden="true">';
     $data = $ci->db->get($table)->result();
     foreach ($data as $row){
@@ -39,13 +39,13 @@ function datalist_dinamis($name,$table,$field,$value=null){
     return $string;
 }
 
-function rename_string_is_aktif($string){
+    function rename_string_is_aktif($string){
         return $string=='y'?'Aktif':'Tidak Aktif';
     }
 
-    function tgl_indo($tanggal){
-        $bulan = array (
-            1 =>   'Januari',
+    function tgl_indo($tanggal) {
+        $bulan = array(
+            1 => 'Januari',
             'Februari',
             'Maret',
             'April',
@@ -58,14 +58,21 @@ function rename_string_is_aktif($string){
             'November',
             'Desember'
         );
+    
+        // Pecah tanggal berdasarkan tanda '-'
         $pecahkan = explode('-', $tanggal);
-        
-        // variabel pecahkan 0 = tanggal
-        // variabel pecahkan 1 = bulan
-        // variabel pecahkan 2 = tahun
-     
-        return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
+    
+        // Periksa apakah format tanggal valid (harus punya 3 bagian)
+        if (count($pecahkan) === 3) {
+            // variabel pecahkan 0 = tahun
+            // variabel pecahkan 1 = bulan
+            // variabel pecahkan 2 = tanggal
+            return $pecahkan[2] . ' ' . $bulan[(int)$pecahkan[1]] . ' ' . $pecahkan[0];
+        } else {
+            return 'Format tanggal tidak valid';
+        }
     }
+    
 
     function getUserName($status) {
         switch($status) {
@@ -94,13 +101,13 @@ function rename_status($statusCode) {
         1 => '<button class="btn btn-sm btn-info">Input Admin</button>',
         2 => '<button class="btn btn-sm btn-danger">Ditolak (GM Smartphone)</button>',
         3 => '<button class="btn btn-sm btn-warning">Revisi (GM Smartphone)</button>',
-        4 => '<button class="btn btn-sm btn-success">Acc (GM Smartphone)</button>',
+        4 => '<button class="btn btn-sm btn-success">Disetujui (GM Smartphone)</button>',
         5 => '<button class="btn btn-sm btn-danger">Ditolak (CEO)</button>',
         6 => '<button class="btn btn-sm btn-warning">Revisi (CEO)</button>',
-        7 => '<button class="btn btn-sm btn-success">Acc (CEO)</button>',
+        7 => '<button class="btn btn-sm btn-success">Disetujui (CEO)</button>',
         8 => '<button class="btn btn-sm btn-danger">Ditolak (Manager Keuangan)</button>',
         9 => '<button class="btn btn-sm btn-warning">Revisi Manager Keuangan</button>',
-        10 => '<button class="btn btn-sm btn-success">Acc (Manager Keuangan)</button>',
+        10 => '<button class="btn btn-sm btn-success">Disetujui (Manager Keuangan)</button>',
     ];
     
     // Contoh penggunaan:
@@ -120,7 +127,11 @@ function is_login(){
         $menu = $ci->db->get_where('tbl_menu',array('url'=>$modul))->row_array();
         $id_menu = $menu['id_menu'];
         // chek apakah user ini boleh mengakses modul ini
-       
+        $hak_akses = $ci->db->get_where('tbl_hak_akses',array('id_menu'=>$id_menu,'id_user_level'=>$id_user_level));
+        if($hak_akses->num_rows()<1){
+            redirect('blokir');
+            exit;
+        }
     }
 }
 

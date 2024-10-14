@@ -71,7 +71,7 @@
 				<?php 
 				//echo anchor(site_url('tbl_nohp/read/'.$tbl_nohp->id_nohp),'<i class="fa fa-eye" aria-hidden="true"></i>','class="btn btn-danger btn-sm"'); 
 				//echo '  '; 
-				echo anchor(site_url('tbl_nohp/update/'.$tbl_nohp->id_nohp),'<i class="fa fa-pencil-square-o" aria-hidden="true"></i>','class="btn btn-danger btn-sm"'); 
+				echo anchor(site_url('tbl_pengajuan/update_nohp/'.$tbl_nohp->id_nohp),'<i class="fa fa-pencil-square-o" aria-hidden="true"></i>','class="btn btn-danger btn-sm"'); 
 				//echo '  '; 
 				//echo anchor(site_url('tbl_nohp/delete/'.$tbl_nohp->id_nohp),'<i class="fa fa-trash-o" aria-hidden="true"></i>','class="btn btn-danger btn-sm" Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"'); 
 				?>

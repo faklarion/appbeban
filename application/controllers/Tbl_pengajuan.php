@@ -117,7 +117,7 @@ class Tbl_pengajuan extends CI_Controller
         $response = curl_exec($curl);
         
         curl_close($curl);
-        echo $response;
+        return $response;
     }
 
     function upload_file(){
@@ -139,7 +139,7 @@ class Tbl_pengajuan extends CI_Controller
 
         $tanggalPengajuan = $this->input->post('tanggal_pengajuan', TRUE);
         $perihal = $this->input->post('perihal', TRUE);
-        $pesan = 'Halo GM Smartphone, Ada Pengajuan baru pada tanggal '.tgl_indo($tanggalPengajuan).' dengan perihal '.$perihal.', silakan cek website pengajuan beban, terimakasih.';
+        $pesan = 'Halo GM Smartphone, Ada Pengajuan baru pada tanggal '.tgl_indo($tanggalPengajuan).' dengan perihal '.$perihal.', silakan cek website https://beban.gskstore.id/, terimakasih.';
         
         $this->_rules();
         $berkas = $this->upload_file();
@@ -203,6 +203,43 @@ class Tbl_pengajuan extends CI_Controller
         }
     }
 
+    public function update_nohp($id)
+    {
+        
+        $row = $this->Tbl_nohp_model->get_by_id($id);
+
+        if ($row) {
+            $data = array(
+                'button' => 'Update',
+                'action' => site_url('tbl_pengajuan/update_action_nohp'),
+                'id_nohp' => set_value('id_nohp', $row->id_nohp),
+                'no_admin' => set_value('no_admin', $row->no_admin),
+                'no_ceo' => set_value('no_ceo', $row->no_ceo),
+                'no_gm' => set_value('no_gm', $row->no_gm),
+                'no_keuangan' => set_value('no_keuangan', $row->no_keuangan),
+	    );
+            $this->template->load('template','tbl_nohp/tbl_nohp_form', $data);
+        } else {
+            $this->session->set_flashdata('message', 'Record Not Found');
+            redirect(site_url('tbl_pengajuan/no_hp'));
+        }
+    }
+
+    public function update_action_nohp() 
+    {
+        
+            $data = array(
+		'no_admin' => $this->input->post('no_admin',TRUE),
+		'no_ceo' => $this->input->post('no_ceo',TRUE),
+		'no_gm' => $this->input->post('no_gm',TRUE),
+		'no_keuangan' => $this->input->post('no_keuangan',TRUE),
+	    );
+
+            $this->Tbl_nohp_model->update($this->input->post('id_nohp', TRUE), $data);
+            $this->session->set_flashdata('message', 'Update Record Success');
+            redirect(site_url('tbl_pengajuan/no_hp'));
+    }
+
     public function acc_gm($id)
     {
         
@@ -234,11 +271,14 @@ class Tbl_pengajuan extends CI_Controller
             $noHpCeo    = $rowHp->no_ceo;
             $noHpAdmin  = $rowHp->no_admin;
 
-            $tanggalPengajuan   = $this->input->post('tanggal_pengajuan', TRUE);
-            $perihal            = $this->input->post('perihal', TRUE);
-            $pesanAcc           = 'Halo CEO, Ada pengajuan yang telah di ACC GM Smartphone pada tanggal '.tgl_indo($tanggalPengajuan).' dengan perihal '.$perihal.', silakan cek website pengajuan beban, terimakasih.';
-            $pesanRevisi        = 'Halo Admin, Ada pengajuan yang harus direvisi pada tanggal '.tgl_indo($tanggalPengajuan).' dengan perihal '.$perihal.', silakan cek website pengajuan beban dan revisi, terimakasih.';
-            $pesanTolak         = 'Halo Admin, Ada pengajuan yang ditolak pada tanggal '.tgl_indo($tanggalPengajuan).' dengan perihal '.$perihal.', silakan cek website pengajuan beban, terimakasih.';
+            $rowPengajuan = $this->Tbl_pengajuan_model->get_by_id($this->input->post('id_pengajuan'));
+
+            $tanggalPengajuan   = $rowPengajuan->tanggal_pengajuan;
+
+            $perihal            = $rowPengajuan->perihal;
+            $pesanAcc           = 'Halo CEO, Ada pengajuan yang telah di Disetujui oleh GM Smartphone pada tanggal '.tgl_indo($tanggalPengajuan).' dengan perihal '.$perihal.', silakan cek website https://beban.gskstore.id/, terimakasih.';
+            $pesanRevisi        = 'Halo Admin, Ada pengajuan yang Harus direvisi, oleh GM Smartphone pada tanggal '.tgl_indo($tanggalPengajuan).' dengan perihal '.$perihal.', silakan cek website https://beban.gskstore.id/, terimakasih.';
+            $pesanTolak         = 'Halo Admin, Ada pengajuan yang ditolak, oleh GM Smartphone pada tanggal '.tgl_indo($tanggalPengajuan).' dengan perihal '.$perihal.', silakan cek website https://beban.gskstore.id/, terimakasih.';
 
             date_default_timezone_set('Asia/Makassar'); # add your city to set local time zone
             $now     = date('Y-m-d H:i:s');
@@ -300,12 +340,18 @@ class Tbl_pengajuan extends CI_Controller
             $rowHp          = $this->Tbl_pengajuan_model->get_nomer();
             $noHpKeuangan   = $rowHp->no_keuangan;
             $noHpAdmin      = $rowHp->no_admin;
+            $noGM           = $rowHp->no_gm;
 
-            $tanggalPengajuan   = $this->input->post('tanggal_pengajuan', TRUE);
-            $perihal            = $this->input->post('perihal', TRUE);
-            $pesanAcc           = 'Halo Manager Keuangan, Ada pengajuan yang telah di ACC CEO pada tanggal '.tgl_indo($tanggalPengajuan).' dengan perihal '.$perihal.', silakan cek website pengajuan beban, terimakasih.';
-            $pesanRevisi        = 'Halo Admin, Ada pengajuan yang harus direvisi pada tanggal '.tgl_indo($tanggalPengajuan).' dengan perihal '.$perihal.', silakan cek website pengajuan beban dan revisi, terimakasih.';
-            $pesanTolak         = 'Halo Admin, Ada pengajuan yang ditolak pada tanggal '.tgl_indo($tanggalPengajuan).' dengan perihal '.$perihal.', silakan cek website pengajuan beban, terimakasih.';
+            $rowPengajuan = $this->Tbl_pengajuan_model->get_by_id($this->input->post('id_pengajuan'));
+
+            $tanggalPengajuan   = $rowPengajuan->tanggal_pengajuan;
+
+            $perihal            = $rowPengajuan->perihal;
+            $pesanAcc           = 'Halo Manager Keuangan, Ada pengajuan yang telah di Disetujui oleh CEO pada tanggal '.tgl_indo($tanggalPengajuan).' dengan perihal '.$perihal.', silakan cek website https://beban.gskstore.id/, terimakasih.';
+            $pesanRevisi        = 'Halo Admin, Ada pengajuan yang Harus direvisi, oleh CEO pada tanggal '.tgl_indo($tanggalPengajuan).' dengan perihal '.$perihal.', silakan cek website https://beban.gskstore.id/, terimakasih.';
+            $pesanRevisiGM      = 'Halo GM Smartphone, Ada pengajuan yang Harus direvisi, oleh CEO pada tanggal '.tgl_indo($tanggalPengajuan).' dengan perihal '.$perihal.', silakan cek website https://beban.gskstore.id/, terimakasih.';
+            $pesanTolak         = 'Halo Admin, Ada pengajuan yang ditolak, oleh CEO pada tanggal '.tgl_indo($tanggalPengajuan).' dengan perihal '.$perihal.', silakan cek website https://beban.gskstore.id/, terimakasih.';
+            $pesanTolakGM       = 'Halo GM Smartphone, Ada pengajuan yang ditolak, oleh CEO pada tanggal '.tgl_indo($tanggalPengajuan).' dengan perihal '.$perihal.', silakan cek website https://beban.gskstore.id/, terimakasih.';
 
             date_default_timezone_set('Asia/Makassar'); # add your city to set local time zone
             $now     = date('Y-m-d H:i:s');
@@ -325,8 +371,10 @@ class Tbl_pengajuan extends CI_Controller
             );
 
             if($this->input->post('status', TRUE) == 5) {
+                $this->kirim_wa($noGM, $pesanTolakGM);
                 $this->kirim_wa($noHpAdmin, $pesanTolak);
             } elseif($this->input->post('status', TRUE) == 6) {
+                $this->kirim_wa($noGM, $pesanRevisiGM);
                 $this->kirim_wa($noHpAdmin, $pesanRevisi);
             } elseif($this->input->post('status', TRUE) == 7) {
                 $this->kirim_wa($noHpKeuangan, $pesanAcc);
@@ -363,15 +411,23 @@ class Tbl_pengajuan extends CI_Controller
 
     public function acc_keuangan_action()
     {
-
             $rowHp          = $this->Tbl_pengajuan_model->get_nomer();
+            $noCeo          = $rowHp->no_ceo;
+            $noGM           = $rowHp->no_gm;
             $noHpAdmin      = $rowHp->no_admin;
 
-            $tanggalPengajuan   = $this->input->post('tanggal_pengajuan', TRUE);
-            $perihal            = $this->input->post('perihal', TRUE);
-            $pesanAcc           = 'Halo Admin, Ada pengajuan yang telah di Manager Keuangan pada tanggal '.tgl_indo($tanggalPengajuan).' dengan perihal '.$perihal.', silakan cek website pengajuan beban dan erzap, terimakasih.';
-            $pesanRevisi        = 'Halo Admin, Ada pengajuan yang harus direvisi pada tanggal '.tgl_indo($tanggalPengajuan).' dengan perihal '.$perihal.', silakan cek website pengajuan beban dan revisi, terimakasih.';
-            $pesanTolak         = 'Halo Admin, Ada pengajuan yang ditolak pada tanggal '.tgl_indo($tanggalPengajuan).' dengan perihal '.$perihal.', silakan cek website pengajuan beban, terimakasih.';
+            $rowPengajuan = $this->Tbl_pengajuan_model->get_by_id($this->input->post('id_pengajuan'));
+
+            $tanggalPengajuan   = $rowPengajuan->tanggal_pengajuan;
+
+            $perihal            = $rowPengajuan->perihal;
+            $pesanAcc           = 'Halo Admin, Ada pengajuan yang telah di Disetujui oleh Manager Keuangan pada tanggal '.tgl_indo($tanggalPengajuan).' dengan perihal '.$perihal.', silakan cek website https://beban.gskstore.id/, terimakasih.';
+            $pesanRevisi        = 'Halo Admin, Ada pengajuan yang Harus direvisi, oleh Manager Keuangan pada tanggal '.tgl_indo($tanggalPengajuan).' dengan perihal '.$perihal.', silakan cek website https://beban.gskstore.id/, terimakasih.';
+            $pesanRevisiGM      = 'Halo GM Smartphone, Ada pengajuan yang Harus direvisi, oleh Manager Keuangan pada tanggal '.tgl_indo($tanggalPengajuan).' dengan perihal '.$perihal.', silakan cek website https://beban.gskstore.id/, terimakasih.';
+            $pesanRevisiCEO     = 'Halo CEO, Ada pengajuan yang Harus direvisi, oleh Manager Keuangan pada tanggal '.tgl_indo($tanggalPengajuan).' dengan perihal '.$perihal.', silakan cek website https://beban.gskstore.id/, terimakasih.';
+            $pesanTolak         = 'Halo Admin, Ada pengajuan yang ditolak, oleh Manager Keuangan pada tanggal '.tgl_indo($tanggalPengajuan).' dengan perihal '.$perihal.', silakan cek website https://beban.gskstore.id/, terimakasih.';
+            $pesanTolakGM       = 'Halo GM Smartphone, Ada pengajuan yang ditolak, oleh Manager Keuangan pada tanggal '.tgl_indo($tanggalPengajuan).' dengan perihal '.$perihal.', silakan cek website https://beban.gskstore.id/, terimakasih.';
+            $pesanTolakCEO      = 'Halo CEO, Ada pengajuan yang ditolak, oleh Manager Keuangan pada tanggal '.tgl_indo($tanggalPengajuan).' dengan perihal '.$perihal.', silakan cek website https://beban.gskstore.id/, terimakasih.';
 
             date_default_timezone_set('Asia/Makassar'); # add your city to set local time zone
             $now     = date('Y-m-d H:i:s');
@@ -391,8 +447,12 @@ class Tbl_pengajuan extends CI_Controller
             );
 
             if($this->input->post('status', TRUE) == 8) {
+                $this->kirim_wa($noCeo, $pesanTolakCEO);
+                $this->kirim_wa($noGM, $pesanTolakGM);
                 $this->kirim_wa($noHpAdmin, $pesanTolak);
             } elseif($this->input->post('status', TRUE) == 9) {
+                $this->kirim_wa($noGM, $pesanRevisiGM);
+                $this->kirim_wa($noCeo, $pesanRevisiCEO);
                 $this->kirim_wa($noHpAdmin, $pesanRevisi);
             } elseif($this->input->post('status', TRUE) == 10) {
                 $this->kirim_wa($noHpAdmin, $pesanAcc);
@@ -412,7 +472,7 @@ class Tbl_pengajuan extends CI_Controller
 
         $tanggalPengajuan = $this->input->post('tanggal_pengajuan', TRUE);
         $perihal = $this->input->post('perihal', TRUE);
-        $pesan = 'Halo GM Smartphone, Ada update pengajuan yang pada tanggal '.tgl_indo($tanggalPengajuan).' dengan perihal '.$perihal.', silakan cek website pengajuan beban, terimakasih.';
+        $pesan = 'Halo GM Smartphone, Ada update pengajuan yang pada tanggal '.tgl_indo($tanggalPengajuan).' dengan perihal '.$perihal.', silakan cek website https://beban.gskstore.id/, terimakasih.';
         
         $this->_rules();
         $berkas = $this->upload_file();
