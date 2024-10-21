@@ -14,7 +14,7 @@
 	
 					<tr>
 						<td width='200'>Tanggal Pengajuan <?php echo form_error('tanggal_pengajuan') ?></td>
-						<td><input type="date" class="form-control" name="tanggal_pengajuan" id="tanggal_pengajuan" placeholder="Tanggal Pengajuan" value="<?php echo $tanggal_pengajuan; ?>" /></td>
+						<td><input type="date" class="form-control" name="tanggal_pengajuan" id="tanggal_pengajuan" placeholder="Tanggal Pengajuan" value="<?php echo $tanggal_pengajuan; ?>" onclick="this.showPicker();" /></td>
 					</tr>
 	    
 					<tr>
