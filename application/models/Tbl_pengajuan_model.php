@@ -91,6 +91,7 @@ class Tbl_pengajuan_model extends CI_Model
         // Kondisi: (tanggal_acc adalah hari ini DAN status adalah 'acc') OR (tanggal_acc adalah besok DAN status bukan 'acc')
         $this->db->where('tanggal_acc', $today);
         $this->db->where("status", $status1);
+        $this->db->order_by('tanggal_pengajuan', 'DESC');
         
         return $this->db->get($this->table)->result();
     }
@@ -102,6 +103,7 @@ class Tbl_pengajuan_model extends CI_Model
         $this->db->or_where("status", 6);
         $this->db->or_where("status", 9);
         $this->db->group_end();
+        $this->db->order_by('tanggal_pengajuan', 'DESC');
         
         return $this->db->get($this->table)->result();
     }
@@ -113,6 +115,7 @@ class Tbl_pengajuan_model extends CI_Model
         $this->db->or_where("status", 5);
         $this->db->or_where("status", 8);
         $this->db->group_end();
+        $this->db->order_by('tanggal_pengajuan', 'DESC');
         
         return $this->db->get($this->table)->result();
     }
